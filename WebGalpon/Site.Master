@@ -1,0 +1,158 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebGalpon.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - El galpón de los Cuadros</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js%22%3E"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-size:x-large">
+  <a class="navbar-brand" style="padding-right:10vh" href="#">Aqui el icono</a>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" style="padding-right:5vh">
+        <a class="nav-link" href="#">Inicio <span class="sr-only">(current) </span></a>
+      </li>
+      <li class="nav-item" style="padding-right:5vh">
+        <a class="nav-link" href="#">Contacto</a>
+      </li>
+      <li class="nav-item dropdown" style="padding-right:5vh">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="" >
+            <div class="dropdown-header" style="font-size:x-large; text-align:center">Cuadros</div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Cuadros rectangulares</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Cuadros escalonados</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Cuadros individuales</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Plotters</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-header" style="font-size:x-large; text-align:center">Otros productos</div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" style="font-size:large"href="#">Percheros y Portallaves</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large"href="#">Relojes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large"href="#">Tablas con frases</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item dropup" style="font-size:large"href="#">Tablas con frases</a>
+            <div class="dropdown-divider"></div>
+        </div>
+      </li>
+
+        <li class="nav-item dropdown" style="padding-right:5vh">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categorias
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="" >
+            <a class="dropdown-item" style="font-size:large" href="#">Paisajes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Fútbol</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Series y películas</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Animales</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Música</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Autos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="#">Otros</a>
+            <div class="dropdown-divider"></div>
+            
+        </div>
+      </li>
+      <li class="nav-item" style="padding-right:5vh">
+        <a class="nav-link" href="#">Preguntas Frecuentes</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link"><asp:TextBox runat="server" ></asp:TextBox></a>
+        </li>
+        <li class="nav-itemn">
+            <a class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg></a>
+        </li>
+    </ul>
+    
+  </div>
+</nav>
+
+
+
+        
+
+        <a class="whatsanchor" style="position:fixed; right:0px; bottom: 0%; z-index:1000; -webkit-transition: all 0.3s ease;">
+            <img style="object-fit:cover; width:60px; cursor:pointer;" src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN" />"
+        </a>
+
+
+
+
+
+
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - El galpón de los Cuadros</p>
+            </footer>
+        </div>
+
+    </form>
+    
+
+</body>
+
+</html>
