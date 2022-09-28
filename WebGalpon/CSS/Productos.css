@@ -1,0 +1,21 @@
+﻿:root {
+    --celeste1: #8ce7ea;
+    --celeste2: #08d3d3;
+    --celeste3: #8fdfe0;
+    --crema1: #f6f3e9;
+    --violeta1: #63496d;
+}
+body {
+    width:100%
+}
+
+.cardflex{
+    width:80vw;
+    margin:auto;
+    margin-top:20px;
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px dashed #08d3d3;
+}

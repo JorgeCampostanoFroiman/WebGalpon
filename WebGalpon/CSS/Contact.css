@@ -1,0 +1,101 @@
+﻿
+:root {
+    --celeste1: #8ce7ea;
+    --celeste2: #08d3d3;
+    --celeste3: #8fdfe0;
+    --crema1: #f6f3e9;
+    --violeta1: #63496d;
+}
+
+body {
+    background-color: var(--crema1);
+}
+
+html {
+    height: 100%;
+}
+
+h2{
+    font-size: x-large; 
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align:center;
+}
+.contact-title, .contact-subtitle{
+    color: var(--violeta1);
+    padding: 40px 0px;
+}
+
+.contact-form{
+    width: 50vw;
+    border: 1px solid var(--celeste3);
+    background-color: var(--crema1);
+    margin:auto;
+    border-radius: 15px;
+}
+
+.form-control {
+    width: 30vw;
+    margin: auto;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--violeta1);
+}
+
+.contact-text, .contact-subject, .contact-email, .contact-name, .contact-submit{
+    padding-bottom:15px;
+}
+.form-button {
+    border-radius: 2px;
+    background-color: rgba(55, 85, 255, 0.24);
+    border-color: rgba(55, 85, 255, 0.24);
+    color: black;
+    width: 30vw;
+}
+
+#form-text {
+    height: 100px;
+}
+
+
+    .form-button:hover,
+    .form-button:focus,
+    .form-button:active,
+    .form-button.active,
+    .form-button:active:focus,
+    .form-button:active:hover,
+    .form-button.active:hover,
+    .form-button.active:focus {
+        background-color: rgba(55, 200, 255, 0.473);
+        border-color: rgba(55, 200, 255, 0.473);
+        color: var(--violeta1);
+    }
+
+.info-contacto{
+    justify-content:center;
+}
+
+.info {
+    font-size: x-large;
+    width: 50VW;
+    height: 15vh;
+    text-align: center;
+    margin: auto;
+    border-bottom: 1px solid var(--violeta1);
+    padding-top: 30px;
+    color: var(--violeta1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    align-items:center;
+}
+
+.texto{
+    font-size:x-large;
+}

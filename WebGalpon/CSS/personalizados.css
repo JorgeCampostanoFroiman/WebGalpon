@@ -1,0 +1,33 @@
+﻿:root {
+    --celeste1: #8ce7ea;
+    --celeste2: #08d3d3;
+    --celeste3: #8fdfe0;
+    --crema1: #f6f3e9;
+    --violeta1: #63496d;
+}
+
+body {
+    background-color: var(--crema1);
+}
+
+.section-perso {
+    margin-top: 30px;
+    width: 70vw;
+    margin: auto;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.img-perso {
+    object-fit: cover;
+    width: 70%;
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+@media (max-width: 991px) {
+    img {
+        width: 100%
+    }
+}

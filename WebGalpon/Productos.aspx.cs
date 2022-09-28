@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections;
+﻿using bussiness;
+using domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using domain;
-using bussiness;
-using System.Security.Cryptography.X509Certificates;
 
-namespace WebGalpon 
+namespace WebGalpon
 {
-    public partial class _Default : System.Web.UI.Page
+    public partial class Productos : System.Web.UI.Page
     {
         public List<Producto> lista;
         public List<Producto> productobuscado;
         public List<Producto> busqueda;
-        public void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
 
@@ -29,10 +27,9 @@ namespace WebGalpon
             catch (Exception ex)
             {
                 Session.Add("Error", ex.ToString());
-                 /// Response.Redirect("Error.aspx");
+                /// Response.Redirect("Error.aspx");
             }
 
-            
 
         }
     }

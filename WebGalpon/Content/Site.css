@@ -1,8 +1,11 @@
-﻿@media all and (min-width: 992px) {
+﻿body {
+    background-color: #f6f3e9;
+}
+
+@media all and (min-width: 992px) {
     .dropdown-menu li {
         position: relative;
     }
-
     .nav-item .submenu {
         display: none;
         position: absolute;
@@ -22,6 +25,9 @@
         .dropdown-menu > li:hover > .submenu {
             display: block;
         }
+
+
+
 }
 /* ============ desktop view .end// ============ */
 
@@ -59,4 +65,3 @@ textarea {
         padding: 0;
     }
 }
-

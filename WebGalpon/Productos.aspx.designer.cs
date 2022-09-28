@@ -11,7 +11,7 @@ namespace WebGalpon
 {
 
 
-    public partial class Contact
+    public partial class Productos
     {
     }
 }
