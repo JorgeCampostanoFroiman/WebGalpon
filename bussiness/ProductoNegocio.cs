@@ -15,16 +15,17 @@ namespace bussiness
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Select IdProducto, Codigo, Tipo, NombreProducto, PrecioCompra, Stock, Ganancia, PrecioVenta, Descripcion, ImagenUrl, Estado From Producto");
+                datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.Precio, Producto.Codigo, Producto.NombreProducto, Producto.Estado, TipoXProducto.ImagenUrl \r\nfrom TipoXProducto inner join Producto on TipoXProducto.Codigo = Producto.Codigo inner join Tipo on TipoXProducto.IdTipo = Tipo.IdTipo");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     Producto aux = new Producto();
-                    aux.IdProducto = (int)datos.Lector["IdProducto"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.NombreProducto = (string)datos.Lector["NombreProducto"];
-                    aux.PrecioVenta = (decimal)datos.Lector["PrecioVenta"];
+                    aux.PrecioVenta = (decimal)datos.Lector["Precio"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Tipo = (string)datos.Lector["NombreTipo"];
                     lista.Add(aux);
                 }
                 return lista;

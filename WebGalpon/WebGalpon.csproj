@@ -121,6 +121,7 @@
     <Content Include="CSS\Home.css" />
     <Content Include="CSS\login.css" />
     <Content Include="CSS\master.css" />
+    <Content Include="CSS\Mayoristas.css" />
     <Content Include="CSS\personalizados.css" />
     <Content Include="CSS\Productos.css" />
     <Content Include="Default.aspx" />
@@ -139,6 +140,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Mayoristas.aspx" />
     <Content Include="Personalizados.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -216,6 +218,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mayoristas.aspx.cs">
+      <DependentUpon>Mayoristas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mayoristas.aspx.designer.cs">
+      <DependentUpon>Mayoristas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Personalizados.aspx.cs">
       <DependentUpon>Personalizados.aspx</DependentUpon>

@@ -1,0 +1,12 @@
+﻿body {
+}
+
+table img:hover{
+    transform:scale(5);
+}
+
+.searchbar{
+    text-align:center;
+    margin:auto;
+    justify-content:center;
+}

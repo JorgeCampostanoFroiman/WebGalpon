@@ -2,6 +2,30 @@
     background-color: #f6f3e9;
 }
 
+.whatsanchor:hover{
+    transform:scale(0.7);
+}
+
+.climbupanchor:hover{
+    transform:scale(0.7);
+    background:powderblue;
+}
+
+#foot a:hover {
+    transform:rotate(15deg);
+}
+#foot #s1:hover {
+    color:red;
+}
+#foot #s2:hover {
+    color:blue;
+}
+#foot #s3:hover {
+    color:lawngreen;
+}
+
+
+
 @media all and (min-width: 992px) {
     .dropdown-menu li {
         position: relative;

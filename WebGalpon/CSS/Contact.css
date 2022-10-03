@@ -15,9 +15,6 @@ html {
     height: 100%;
 }
 
-h2{
-    font-size: x-large; 
-}
 
 body {
     height: 100%;
@@ -34,7 +31,7 @@ body {
 .contact-form{
     width: 50vw;
     border: 1px solid var(--celeste3);
-    background-color: var(--crema1);
+    background-color: var(--celeste2);
     margin:auto;
     border-radius: 15px;
 }
@@ -44,14 +41,13 @@ body {
     margin: auto;
     border-radius: 10px;
     text-align: center;
-    color: var(--violeta1);
 }
 
 .contact-text, .contact-subject, .contact-email, .contact-name, .contact-submit{
     padding-bottom:15px;
 }
 .form-button {
-    border-radius: 2px;
+    border-radius: 15px;
     background-color: rgba(55, 85, 255, 0.24);
     border-color: rgba(55, 85, 255, 0.24);
     color: black;

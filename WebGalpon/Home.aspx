@@ -84,7 +84,7 @@
             <div class="trabajos" id="trabajos">
 
                 <div class="trabajos-card">
-                    <a href="Contact.aspx">
+                    <a href="https://www.elgalpondeloscuadros.com.ar/">
                     <div class="n1">
                         <h3>Venta Minorista</h3>
                     </div>
@@ -95,7 +95,7 @@
                         <img src="https://i.ibb.co/C7p90HR/minorista.png" style="height:100px;width:100px"/>
                     </div>
                     <div class="n3">
-                        <span>Contactanos para saber más!</span>
+                        <span>Ver Página Minorista</span>
                     </div>
                     
                 </a>

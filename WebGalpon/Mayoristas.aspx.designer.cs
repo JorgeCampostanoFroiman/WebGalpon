@@ -11,34 +11,34 @@ namespace WebGalpon
 {
 
 
-    public partial class Productos
+    public partial class Mayoristas
     {
 
         /// <summary>
-        /// Control BarraBusquedaProd.
+        /// Control BarraBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BarraBusquedaProd;
+        protected global::System.Web.UI.WebControls.TextBox BarraBusqueda;
 
         /// <summary>
-        /// Control BotonBusquedaProd.
+        /// Control BotonBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BotonBusquedaProd;
+        protected global::System.Web.UI.WebControls.Button BotonBusqueda;
 
         /// <summary>
-        /// Control RefrescarProd.
+        /// Control Refrescar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RefrescarProd;
+        protected global::System.Web.UI.WebControls.Button Refrescar;
     }
 }

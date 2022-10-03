@@ -15,7 +15,20 @@ body {
     margin-top:20px;
 }
 
-.card {
-    border-radius: 10px;
-    border: 1px dashed #08d3d3;
+.searchbar {
+    text-align: center;
+    margin: auto;
+    justify-content: center;
 }
+
+.card {
+    border: inset 1em 1em var(--violeta1);
+    border-radius: 30px;
+}
+    .card:hover {
+        box-shadow: var(--celeste1) 0px 0px 0px 3px, var(--crema1) 0px 0px 0px 6px, var(--celeste2) 0px 0px 0px 9px, var(--violeta1) 0px 0px 0px 12px, var(--crema1) 0px 0px 0px 15px;   
+        transform: scale(1.1);
+        z-index: 10000;
+    }
+
+/*box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;*/

@@ -3,17 +3,17 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <link href="CSS/Contact.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/contact.css" rel="Stylesheet" type="text/css" />
 
     
 
     <body class="main-bg">
 
-        <div class="contact-title"><h2 style="font-size:x-large">Contacto</h2></div>
+        <div class="contact-title"><h1>Contacto</h1></div>
 
-        <form class="contact-form">
+        <div class="contact-form">
             <div class="contact-subtitle">
-                <h3>Dejanos tu nombre y mensaje y responderemos a la brevedad!</h3>
+                <h3 style="width:80%;margin:auto;">Dejanos tu nombre y mensaje y responderemos a la brevedad!</h3>
             </div>
 
             <div class="contact-name">
@@ -35,7 +35,7 @@
             <div class="contact-submit">
                 <button type="submit" class="form-button">Enviar!</button>
             </div>  
-        </form>
+        </div>
 
        
          <div class="info-contacto">

@@ -15,7 +15,7 @@ namespace bussiness
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=GALPON_DB; integrated security=sspi");
+            conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=EJEMPLO3_DB; integrated security=sspi");
             comando = new SqlCommand();
         }
 

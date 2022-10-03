@@ -11,17 +11,17 @@ namespace WebGalpon
 {
     public partial class Productos : System.Web.UI.Page
     {
-        public List<Producto> lista;
-        public List<Producto> productobuscado;
-        public List<Producto> busqueda;
+        public List<Producto> listaMinoristas;
+        public List<Producto> productobuscadoProd;
+        public List<Producto> busquedaProd;
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
 
             try
             {
-                lista = negocio.Listar();
-                Session.Add("ListaProducto", lista);
+                listaMinoristas = negocio.Listar();
+                Session.Add("ListaProducto", listaMinoristas);
 
             }
             catch (Exception ex)
@@ -31,6 +31,59 @@ namespace WebGalpon
             }
 
 
+        }
+
+        protected void BotonBusquedaProd_Click(object sender, EventArgs e)
+        {
+            List<Producto> Aux = (List<Producto>)Session["ListaProducto"];
+            busquedaProd = new List<Producto>();
+
+
+            foreach (Producto item in Aux)
+            {
+                if (System.Text.RegularExpressions.Regex.IsMatch(item.NombreProducto, BarraBusquedaProd.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                {
+                    busquedaProd.Add(item);
+                }
+                else
+                {
+                    if (System.Text.RegularExpressions.Regex.IsMatch(item.Codigo, BarraBusquedaProd.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                    {
+                        busquedaProd.Add(item);
+                    }
+                    else
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(item.Tipo, BarraBusquedaProd.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                        {
+                            busquedaProd.Add(item);
+
+                        }
+                        else
+                        {
+                            if (System.Text.RegularExpressions.Regex.IsMatch(Convert.ToString(item.PrecioVenta), BarraBusquedaProd.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                            {
+                                busquedaProd.Add(item);
+
+                            }
+
+                        }
+
+
+                    }
+                }
+            }
+
+
+
+            listaMinoristas = busquedaProd;
+            Session.Add("Buscar", busquedaProd);
+
+        }
+
+        protected void RefrescarProd_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            listaMinoristas = negocio.Listar();
         }
     }
 }
