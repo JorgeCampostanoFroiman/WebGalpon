@@ -117,14 +117,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="CSS\Contact.css" />
     <Content Include="CSS\Default.css" />
+    <Content Include="CSS\detalleproducto.css" />
     <Content Include="CSS\FAQ.css" />
     <Content Include="CSS\Home.css" />
+    <Content Include="CSS\infomayoristas.css" />
     <Content Include="CSS\login.css" />
     <Content Include="CSS\master.css" />
     <Content Include="CSS\Mayoristas.css" />
     <Content Include="CSS\personalizados.css" />
     <Content Include="CSS\Productos.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DetalleProducto.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -139,6 +142,7 @@
     <Content Include="Faq.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
+    <Content Include="InfoMayoristas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mayoristas.aspx" />
     <Content Include="Personalizados.aspx" />
@@ -202,6 +206,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetalleProducto.aspx.cs">
+      <DependentUpon>DetalleProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleProducto.aspx.designer.cs">
+      <DependentUpon>DetalleProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +222,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InfoMayoristas.aspx.cs">
+      <DependentUpon>InfoMayoristas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InfoMayoristas.aspx.designer.cs">
+      <DependentUpon>InfoMayoristas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

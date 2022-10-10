@@ -25,6 +25,7 @@
       <th scope="col">Precio</th>
       <th scope="col">Estado</th>
       <th scope="col">Carrito</th>
+      <th scope="col">Detalle</th>
 
     </tr>
   </thead>
@@ -38,7 +39,8 @@
       <td><% = item.Tipo %></td>
       <td><% = item.PrecioVenta %></td> 
       <td id="EstadoStock"><% = item.Estado %></td>
-      <td><a class="btn btn-dark btn-sm" role="button">Agregar al carrito</a></td>
+      <td><a class="btn btn-dark btn-sm" role="button" style="color:mintcream;">Agregar al carrito</a></td>
+      <td><a class="btn btn-dark btn-sm" href="DetalleProducto.aspx?id=<% = item.Codigo%>" style="color:mintcream;"> Ver detalle</a></td>
     </tr>
        <% } %>
       </tbody>

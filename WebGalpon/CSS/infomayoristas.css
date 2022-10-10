@@ -1,0 +1,31 @@
+﻿.contenedor{
+    width: 90vw;
+}
+.h1{
+    text-align:center;
+    margin-top:15px;
+}
+
+.h2{
+    margin-bottom:10px;
+}
+
+.mayoristas-cards{
+    background-color: skyblue;
+    display:flex;
+    flex-direction:row; 
+}
+
+.mayo-card {
+    background-color: mintcream;
+    text-align: center;
+    margin: 10px;
+    width: 30vw;
+}
+
+.mayo-card a{
+    color:mintcream;
+    margin-bottom: 5px;
+    border-radius:5px;
+    border-color: mintcream;
+}

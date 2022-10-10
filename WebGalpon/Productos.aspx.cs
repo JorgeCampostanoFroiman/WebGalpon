@@ -18,17 +18,55 @@ namespace WebGalpon
         {
             ProductoNegocio negocio = new ProductoNegocio();
 
-            try
+            if ((Request.QueryString["tipo"]) != null)
             {
-                listaMinoristas = negocio.Listar();
-                Session.Add("ListaProducto", listaMinoristas);
 
+
+                try
+                {
+                    listaMinoristas = negocio.ListarPorTipo(Request.QueryString["tipo"]);
+                    Session.Add("ListaProducto", listaMinoristas);
+
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("Error", ex.ToString());
+                    /// Response.Redirect("Error.aspx");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Session.Add("Error", ex.ToString());
-                /// Response.Redirect("Error.aspx");
+                if ((Request.QueryString["cat"]) != null)
+                {
+                    try
+                    {
+                        listaMinoristas = negocio.ListarPorCategoria(Request.QueryString["cat"]);
+                        Session.Add("ListaProducto", listaMinoristas);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Session.Add("Error", ex.ToString());
+                        /// Response.Redirect("Error.aspx");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        listaMinoristas = negocio.Listar();
+                        Session.Add("ListaProducto", listaMinoristas);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Session.Add("Error", ex.ToString());
+                        /// Response.Redirect("Error.aspx");
+                    }
+                }
             }
+
+            
 
 
         }
