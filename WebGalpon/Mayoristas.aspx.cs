@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace WebGalpon
 {
@@ -15,8 +16,17 @@ namespace WebGalpon
         public List<Producto> listaMayoristas;
         public List<Producto> ProductoBuscar;
         public List<Producto> Busqueda;
+
+        public List<ItemCarrito> items;
+        ItemCarrito iten;
         protected void Page_Load(object sender, EventArgs e)
         {
+            items = (List<ItemCarrito>)Session["items"];
+            if (items == null)
+                items = new List<ItemCarrito>();
+
+            iten = new ItemCarrito();
+
             ProductoNegocio negocio = new ProductoNegocio();
 
             try
@@ -31,6 +41,54 @@ namespace WebGalpon
                 /// Response.Redirect("Error.aspx");
             }
 
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["Id"] != null)
+                {
+                    if (items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]) == null)
+                    {
+                        List<Producto> listaActual = (List<Producto>)Session["ListaProductos"];
+                        iten.ItemArt = listaActual.Find(x => x.ImagenUrl.ToString() == Request.QueryString["Id"]);
+                        iten.Cantidad = 1;
+                        iten.Subtotal = iten.Cantidad * iten.ItemArt.PrecioVenta;
+                        items.Add(iten);
+                    }
+                    else
+                    {
+                        if (Request.QueryString["c"] == "r")
+                        {
+                            ItemCarrito elim = items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]);
+                            iten.Cantidad = elim.Cantidad - 1;
+                            iten.ItemArt = elim.ItemArt;
+                            iten.Subtotal = iten.Cantidad * iten.ItemArt.PrecioVenta;
+
+                            if (iten.Cantidad == 0)
+                            {
+                                items.Remove(elim);
+                            }
+                            else
+                            {
+                                items.Remove(elim);
+                                items.Add(iten);
+                            }
+
+                        }
+                        else
+                        {
+
+                            ItemCarrito elim = items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]);
+                            iten.Cantidad = elim.Cantidad + 1;
+                            iten.ItemArt = elim.ItemArt;
+                            iten.Subtotal = iten.Cantidad * iten.ItemArt.PrecioVenta;
+                            items.Remove(elim);
+                            items.Add(iten);
+                        }
+                    }
+
+                }
+            }
+
+
         }
 
         /*SEARCH BAR*/
@@ -39,7 +97,6 @@ namespace WebGalpon
         {
             List<Producto> Aux = (List<Producto>)Session["ListaProducto"];
             Busqueda = new List<Producto>();
-            
 
             foreach (Producto item in Aux)
             {
@@ -74,8 +131,6 @@ namespace WebGalpon
                     }
                 }
             }
-                
-
 
             listaMayoristas = Busqueda;
             Session.Add("Buscar", Busqueda);
@@ -87,7 +142,8 @@ namespace WebGalpon
         {
             ProductoNegocio negocio = new ProductoNegocio();
             listaMayoristas = negocio.Listar();
-
         }
+
     }
+
 }

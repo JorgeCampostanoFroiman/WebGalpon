@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Productos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Mayoristas.aspx.cs" Inherits="WebGalpon.Mayoristas" %>
+﻿<%@ Page Title="Productos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Mayoristas.aspx.cs" Inherits="WebGalpon.Mayoristas" MaintainScrollPositionOnPostback="true"  %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
@@ -14,7 +14,7 @@
     </div>
     
 
-    <table class="table table-striped mt-5" style="background-color:#b6d1d4 ">
+    <table class="table table-striped mt-5" style="background-color:#b6d1d4" id="">
   <thead class="thead-dark">
 
     <tr>
@@ -23,7 +23,6 @@
       <th scope="col">Imagen</th>
       <th scope="col">Tipo</th>
       <th scope="col">Precio</th>
-      <th scope="col">Estado</th>
       <th scope="col">Carrito</th>
       <th scope="col">Detalle</th>
 
@@ -31,20 +30,29 @@
   </thead>
   <tbody>
       <% foreach (domain.Producto item in listaMayoristas)
-            {%>
+          {%>
       <tr>
       <th scope="row"><% = item.Codigo %></th>
       <td><% = item.NombreProducto %></td> 
-      <td><img style="width:33px;" src="<% = item.ImagenUrl %>"/></td>
+      <td id="tdimg" class="tdimg"> <img style="width:33px;" src="<% = item.ImagenUrl %>"/></td>
       <td><% = item.Tipo %></td>
       <td><% = item.PrecioVenta %></td> 
-      <td id="EstadoStock"><% = item.Estado %></td>
-      <td><a class="btn btn-dark btn-sm" role="button" style="color:mintcream;">Agregar al carrito</a></td>
-      <td><a class="btn btn-dark btn-sm" href="DetalleProducto.aspx?id=<% = item.Codigo%>" style="color:mintcream;"> Ver detalle</a></td>
-    </tr>
+      <td><a href="Mayoristas.aspx?id=<% = item.ImagenUrl%>" class="btn btn-dark btn-sm">Agregar al carrito</a></td>
+      <td><a class="btn btn-dark btn-sm" href="DetalleProducto.aspx?id=<% = item.Codigo%>" style="color:mintcream;" target="_blank" rel="noopener noreferrer"> Ver detalle</a></td>
+      </tr>
+      
        <% } %>
       </tbody>
-        </table>
 
+  
+
+   </table>
+
+    <script>
+        function databind() {
+            alert(document.getElementById('.tdimg'));
+        }
+
+    </script>
 
 </asp:Content>
