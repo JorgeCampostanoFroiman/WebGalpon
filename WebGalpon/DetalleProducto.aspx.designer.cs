@@ -15,51 +15,6 @@ namespace WebGalpon
     {
 
         /// <summary>
-        /// Control image4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image4;
-
-        /// <summary>
-        /// Control image1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image1;
-
-        /// <summary>
-        /// Control image2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image2;
-
-        /// <summary>
-        /// Control image3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image3;
-
-        /// <summary>
-        /// Control image5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image5;
-
-        /// <summary>
         /// Control imagenProducto.
         /// </summary>
         /// <remarks>
@@ -105,6 +60,15 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.DropDownList ddlVariantes;
 
         /// <summary>
+        /// Control btnCarrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCarrito;
+
+        /// <summary>
         /// Control labelVolver.
         /// </summary>
         /// <remarks>
@@ -114,13 +78,13 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Label labelVolver;
 
         /// <summary>
-        /// Control image6.
+        /// Control image11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image6;
+        protected global::System.Web.UI.WebControls.Image image11;
 
         /// <summary>
         /// Control related1.
@@ -141,13 +105,13 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Label relatedp1;
 
         /// <summary>
-        /// Control image7.
+        /// Control image12.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image7;
+        protected global::System.Web.UI.WebControls.Image image12;
 
         /// <summary>
         /// Control related2.
@@ -168,13 +132,13 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Label relatedp2;
 
         /// <summary>
-        /// Control image8.
+        /// Control image13.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image8;
+        protected global::System.Web.UI.WebControls.Image image13;
 
         /// <summary>
         /// Control related3.

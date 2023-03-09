@@ -11,7 +11,7 @@ namespace WebGalpon
 {
 
 
-    public partial class Personalizados
+    public partial class _Default
     {
     }
 }

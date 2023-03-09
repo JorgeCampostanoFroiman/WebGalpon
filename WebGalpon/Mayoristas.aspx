@@ -37,7 +37,7 @@
       <td id="tdimg" class="tdimg"> <img style="width:33px;" src="<% = item.ImagenUrl %>"/></td>
       <td><% = item.Tipo %></td>
       <td><% = item.PrecioVenta %></td> 
-      <td><a href="Mayoristas.aspx?id=<% = item.ImagenUrl%>" class="btn btn-dark btn-sm">Agregar al carrito</a></td>
+      <td><a href="Carrito.aspx?id=<% = item.ImagenUrl%>" style="color:mintcream;" target="_blank" rel="noopener noreferrer"  class="btn btn-dark btn-sm">Agregar al carrito</a></td>
       <td><a class="btn btn-dark btn-sm" href="DetalleProducto.aspx?id=<% = item.Codigo%>" style="color:mintcream;" target="_blank" rel="noopener noreferrer"> Ver detalle</a></td>
       </tr>
       

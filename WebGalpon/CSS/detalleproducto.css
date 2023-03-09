@@ -1,5 +1,12 @@
-﻿.contenedor {
-    width: 90vw;
+﻿:root {
+    --celeste1: #8ce7ea;
+    --celeste2: #08d3d3;
+    --celeste3: #8fdfe0;
+    --crema1: #f6f3e9;
+    --violeta1: #63496d;
+}
+.contenedor {
+    width: 80vw;
     display: flex;
     flex-direction: row;
     margin-top: 10px;
@@ -7,64 +14,106 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    height:40vw;
+    height: 40vw;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: var(--violeta1);
 }
 
-.details-title{
-    margin-top:2vw;
-    text-align:center;
-    justify-content:center;
-}
-
-.side-images{
-    width:6vw;
+.cardflex2{
     display:flex;
-    flex-direction:column;  
-    align-items:center;
+   flex-direction:row;
 }
 
-.principal-image{
-    width:44vw;
+.card-body2
+
+.details-title {
+    margin-top: 2vw;
+    text-align: center;
+    justify-content: center;
 }
 
-.product-images{
-    width: 55vw;
-    display:flex;
-    flex-direction:row;
+.principal-image {
+    width: 44vw;
+    background-color: var(--celeste2);
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: var(--violeta1);
+}
+
+.product-images {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: var(--violeta1);
 }
 
 .product-details{   
     width:35vw;
     display:flex;
     flex-direction:column;
+    margin-right:10px;
 }
 
-.side-img{
-    width: 5vw;
+
+.side-img {
+    width: 15vw;
     padding: 2px;
     margin: 5px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: var(--violeta1);
 }
 
-.main-img{
-    width:30vw;
+.main-img {
+    width: 30vw;
 }
 
-.related-images{
-    display:flex;
-    justify-content:center;
-    text-align:center;
-    margin-top:10px;
+.related-images {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: var(--violeta1);
 }
 
-.related-item{
-    width:25vw;
+.related-item {
+    width: 25vw;
+    margin-top: 10px;
+    margin-right: 5px;
+    border-radius: 10px;
 }
 
 .related-img{
     width:25vw;
     padding:5px;
+
 }
 
 .hide-button{
     visibility:hidden;
+}
+
+
+.card {
+    border: inset 1em 1em var(--violeta1);
+    border-radius: 30px;
+}
+
+
+.card-img-top:hover {
+    transform:rotate(-45deg);
+    transform: scale(2);
+    z-index: 11000;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.principal-image:hover {
+    transform: rotate(-45deg);
+    transform: scale(1.2);
+    z-index: 11000;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }

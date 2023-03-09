@@ -6,100 +6,261 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using domain;
 using bussiness;
+using System.Data;
+using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
+using Org.BouncyCastle.Asn1.Ocsp;
+using iTextSharp.text;
 
 namespace WebGalpon
 {
     public partial class Carrito : System.Web.UI.Page
     {
         public List<ItemCarrito> items;
-        ItemCarrito iten;
         public decimal total;
+        DataTable dt = new DataTable();
+        ProductoNegocio negocio = new ProductoNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                items = (List<ItemCarrito>)Session["items"];
-                if (items == null)
-                    items = new List<ItemCarrito>();
-
-                iten = new ItemCarrito();
-
-                if (!IsPostBack)
+                AlertLabel.Text = " ";
+                try
                 {
+                    dt = Session["items"] as DataTable;
+                    if (dt == null)
+                        dt = CreateDatatable();
+
+                    GridViewCarrito.DataSource = dt;
+                    GridViewCarrito.DataBind();
+
                     if (Request.QueryString["Id"] != null)
                     {
-                        if (items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]) == null)
+                        TitleLabel.Text = "Carrito con tu pedido";
+                        ActualizarButton.Visible = true;
+
+                        if (ExisteProdEnDt(Request.QueryString["Id"]) == false)
                         {
-                            List<Producto> listaActual = (List<Producto>)Session["ListaProductos"];
-                            iten.ItemArt = listaActual.Find(x => x.ImagenUrl.ToString() == Request.QueryString["Id"]);
-                            iten.Cantidad = 1;
-                            iten.Subtotal = iten.Cantidad * iten.ItemArt.PrecioVenta;
-                            items.Add(iten);
+                            AgregarRow(negocio.BuscarProducto(Request.QueryString["Id"]));
+                            AlertLabel.Text = "Producto agregado correctamente";
                         }
                         else
                         {
-                            if (Request.QueryString["c"] == "r")
-                            {
-                                ItemCarrito elim = items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]);
-                                iten.Cantidad = elim.Cantidad - 1;
-                                iten.ItemArt = elim.ItemArt;
-                                iten.Subtotal = iten.Cantidad * iten.ItemArt.PrecioVenta;
-
-                                if (iten.Cantidad == 0)
-                                {
-                                    items.Remove(elim);
-                                }
-                                else
-                                {
-                                    items.Remove(elim);
-                                    items.Add(iten);
-                                }
-
-                            }
-                            else
-                            {
-
-                                ItemCarrito elim = items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]);
-                                iten.Cantidad = elim.Cantidad + 1;
-                                iten.ItemArt = elim.ItemArt;
-                                iten.Subtotal = iten.Cantidad * iten.ItemArt.PrecioVenta;
-                                items.Remove(elim);
-                                items.Add(iten);
-                            }
+                            SumarUnaUnidad(Request.QueryString["Id"]);
+                            AlertLabel.Text = "El producto ya estaba en el carrito, se le sumó una unidad";
                         }
-
                     }
-
-                    if (Request.QueryString["c"] == "d")
+                    else
                     {
-                        ItemCarrito elim = items.Find(x => x.ItemArt.ImagenUrl.ToString() == Request.QueryString["Id"]);
-                        items.Remove(elim);
-                        Session.Add("items", items);
+                        ActualizarButton.Visible = false;
+
+                        ProductosButton.Visible = true;
+
+                        AlertLabel.Text = "Actualmente no tienes productos en el carrito... ";
+
+                        TitleLabel.Text = " ";
+
+
                     }
-
-                    repetidor.DataSource = items;
-                    repetidor.DataBind();
-
                 }
-
-                Session.Add("items", items);
-
-                foreach (ItemCarrito item in items)
+                catch(Exception)
                 {
-                    total += item.Subtotal;
+                    Response.Redirect("Error.aspx");
                 }
             }
-            catch (Exception)
+        }
+
+        private void SumarUnaUnidad(string id)
+        {
+            DataTable dt = CreateDatatable();
+
+            foreach (GridViewRow row in GridViewCarrito.Rows)
             {
 
-                Response.Redirect("Error.aspx");
+                TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                string cant = txtCant.Text;
+
+                string fila = row.Cells[1].Text;
+                string codigo = row.Cells[2].Text;
+                string nombre = row.Cells[3].Text;
+                string precio = row.Cells[5].Text;
+                string imagen = row.Cells[6].Text;
+                string subtotal = row.Cells[6].Text;
+                
+                if (codigo == id)
+                {
+                    int cantidad = Convert.ToInt32(cant);
+                    cantidad++;
+                    dt.Rows.Add(fila, codigo, nombre, Convert.ToString(cantidad), precio, subtotal, imagen);
+                    dt.AcceptChanges();
+                }
+                else
+                {
+                    dt.Rows.Add(fila, codigo, nombre, cant, precio, subtotal, imagen);
+                    dt.AcceptChanges();
+                }
+
+                
             }
-            
+            Session.Add("items", dt);
+            GridViewCarrito.DataSource = dt;
+            GridViewCarrito.DataBind();
         }
 
-        protected void BT1_Click(string a)
+        private void AgregarRow(Producto prod)
         {
+            DataTable dt = CargarDataTable();
+            int fila = 1;
 
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                fila++;
+            }
+
+            dt.Rows.Add(fila.ToString(), prod.Codigo, prod.NombreProducto, Convert.ToString(prod.Cantidad), Convert.ToString(prod.PrecioVenta), Convert.ToString(prod.Cantidad * prod.PrecioVenta), prod.ImagenUrl);
+            dt.AcceptChanges();
+
+            GridViewCarrito.DataSource = dt;
+            GridViewCarrito.DataBind();
+
+            Session.Add("items", dt);
         }
-    }
+
+        public void InsertRecords()
+        {
+            DataTable dt = CreateDatatable();
+            for (int i = 0; i < 10; i++)
+            {
+                dt.Rows.Add((i + 1).ToString(), "0", " ", "0", " ", " ", " ");
+                dt.AcceptChanges();
+            }
+
+            GridViewCarrito.DataSource = dt;
+            GridViewCarrito.DataBind();
+        }
+
+        private bool ExisteProdEnDt(string codigo)
+        { 
+            foreach (GridViewRow row in GridViewCarrito.Rows)
+            {
+                if(codigo == row.Cells[2].Text){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private DataTable CargarDataTable()
+        {
+            DataTable dt = CreateDatatable();
+
+            foreach (GridViewRow row in GridViewCarrito.Rows)
+            {
+                TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                string cant = txtCant.Text;
+
+                string fila = row.Cells[1].Text;
+                string codigo = row.Cells[2].Text;
+                string nombre = row.Cells[3].Text;
+                string precio = row.Cells[5].Text;
+                string imagen = row.Cells[6].Text;
+                string subtotal = row.Cells[6].Text;
+
+                dt.Rows.Add(fila, codigo, nombre, cant, precio, subtotal, imagen);
+                dt.AcceptChanges();
+            }
+            return dt;
+        }
+
+        private DataTable CreateDatatable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Fila");
+            dt.Columns.Add("Codigo");
+            dt.Columns.Add("Nombre");
+            dt.Columns.Add("Cantidad");
+            dt.Columns.Add("Precio");
+            dt.Columns.Add("Subtotal");
+            dt.Columns.Add("Imagen");
+            dt.AcceptChanges();
+            return dt;
+        }
+
+        protected void ActualizarButton_Click1(object sender, EventArgs e)
+        {
+                int cantidadProductos = 0;
+                int totalPedido = 0;
+
+                foreach (GridViewRow row in GridViewCarrito.Rows)
+                {
+                    string txtCodigo = row.Cells[2].Text;
+
+                    TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+
+
+                    if (negocio.ExisteProducto(txtCodigo) == true)
+                    {   
+                        Producto prod = negocio.BuscarProducto(txtCodigo);
+
+                        row.Cells[3].Text = prod.NombreProducto;
+                        row.Cells[5].Text = Convert.ToString(prod.PrecioVenta);
+
+                        if (txtCant.Text != null)
+                        {
+                            int cant = Convert.ToInt32(txtCant.Text);
+                            row.Cells[6].Text = Convert.ToString(prod.PrecioVenta * cant);
+
+                            cantidadProductos += cant;
+                            totalPedido += Convert.ToInt32(prod.PrecioVenta * cant);
+
+                        }
+                    }
+
+                DataTable Guardar = CargarDataTable();
+
+
+                Session.Add("items", Guardar);
+
+            }
+                LabelTotalPedido.Text = "Total: $" + totalPedido.ToString();
+                LabelTotalProductos.Text = "Total de Productos: " + cantidadProductos.ToString();
+        }
+
+        protected void GridViewCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int index = Convert.ToInt32(e.RowIndex);
+
+            DataTable dt = CreateDatatable();
+
+            int filaNueva = 1;
+
+            foreach (GridViewRow row in GridViewCarrito.Rows)
+            {
+                if (row.RowIndex != index)
+                {
+                    TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                    string cant = txtCant.Text;
+
+                    string codigo = row.Cells[2].Text;
+                    string nombre = row.Cells[3].Text;
+                    string precio = row.Cells[5].Text;
+                    string imagen = row.Cells[6].Text;
+                    string subtotal = row.Cells[6].Text;
+
+                    dt.Rows.Add(filaNueva, codigo, nombre, cant, precio, subtotal, imagen);
+                    dt.AcceptChanges();
+
+                    filaNueva++;
+                }
+                else
+                {
+
+                }
+            }
+
+
+            GridViewCarrito.DataSource = dt;
+            GridViewCarrito.DataBind();
+        }
+     }
 }

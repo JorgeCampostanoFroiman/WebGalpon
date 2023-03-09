@@ -31,7 +31,7 @@ body {
 .contact-form{
     width: 50vw;
     border: 1px solid var(--celeste3);
-    background-color: var(--celeste2);
+    background-color: skyblue;
     margin:auto;
     border-radius: 15px;
 }
@@ -51,7 +51,7 @@ body {
     background-color: rgba(55, 85, 255, 0.24);
     border-color: rgba(55, 85, 255, 0.24);
     color: black;
-    width: 30vw;
+    width: 15vw;
 }
 
 #form-text {

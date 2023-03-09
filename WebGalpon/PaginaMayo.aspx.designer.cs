@@ -11,7 +11,7 @@ namespace WebGalpon
 {
 
 
-    public partial class CarritoMayorista
+    public partial class PaginaMayo
     {
 
         /// <summary>

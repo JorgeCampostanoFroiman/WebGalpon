@@ -12,6 +12,7 @@ namespace WebGalpon
     public partial class Home : System.Web.UI.Page
     {
         public List<Producto> ListaProductos;
+        public List<Producto> ListaProductosPopulares;
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -20,6 +21,8 @@ namespace WebGalpon
             {
                 ListaProductos = negocio.Listar();
                 Session.Add("ListaProductos", ListaProductos);
+                ListaProductosPopulares = negocio.ListarPopulares();
+                Session.Add("ListaProductosPopulares", ListaProductosPopulares);
 
             }
             catch (Exception ex)

@@ -11,5 +11,10 @@ namespace domain
         public int Cantidad { get; set; }
         public Producto ItemArt { get; set; }
         public decimal Subtotal { get; set; }
+
+        public ItemCarrito()
+        {
+
+        }
     }
 }

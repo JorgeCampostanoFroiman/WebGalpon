@@ -10,3 +10,8 @@ table img:hover{
     margin:auto;
     justify-content:center;
 }
+
+.BotonEliminar{
+    height:100px;
+    color:red;
+}

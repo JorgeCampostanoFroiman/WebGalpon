@@ -11,35 +11,17 @@ namespace WebGalpon
 {
 
 
-    public partial class Carrito
+    public partial class CompraRapida
     {
 
         /// <summary>
-        /// Control TitleLabel.
+        /// Control GridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLabel;
-
-        /// <summary>
-        /// Control AlertLabel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AlertLabel;
-
-        /// <summary>
-        /// Control GridViewCarrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewCarrito;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
         /// Control ActualizarButton.
@@ -49,6 +31,24 @@ namespace WebGalpon
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ActualizarButton;
+
+        /// <summary>
+        /// Control AgregarFilaButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AgregarFilaButton;
+
+        /// <summary>
+        /// Control Agregar10FilasButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Agregar10FilasButton;
 
         /// <summary>
         /// Control LabelTotalProductos.
@@ -69,12 +69,30 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Label LabelTotalPedido;
 
         /// <summary>
-        /// Control ProductosButton.
+        /// Control PdfButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ProductosButton;
+        protected global::System.Web.UI.WebControls.Button PdfButton;
+
+        /// <summary>
+        /// Control EmailButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EmailButton;
+
+        /// <summary>
+        /// Control TextMail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextMail;
     }
 }

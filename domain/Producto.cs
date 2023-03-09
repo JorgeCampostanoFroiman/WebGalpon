@@ -21,8 +21,8 @@ namespace domain
         public string Descripcion { get; set; }
         public string ImagenUrl { get; set; }
         public int Estado { get; set; }
-
-
+        public int Subtotal { get; set; }
+        public int Cantidad { get; set; }
 
         public Producto(int id)
         {

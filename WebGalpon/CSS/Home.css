@@ -64,6 +64,11 @@
 }
 
 
+#productos li:hover p {
+    transform: scale(1.5);
+    visibility:hidden;
+}
+
 
 
 
@@ -115,37 +120,58 @@
 
 
 .envios-box {
-    display:flex;
-    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
 }
 
 .envios-box p{
     width:60%;
     margin:auto;
     margin-top:20px;
+
 }
 
 .envios-capital {
-    display: flex;
     margin-right:15px;
     border: 1px solid black;
     border-radius: 10px;
 }
 .envios-interior {
-    display: flex;
     border: 1px solid black;
     border-radius: 10px;
 }
 
-.envios img{
+.envios img {
     margin: 5px;
     border: 1px solid black;
+    height:200px;
 }
 
 .envios p {
     font-size: large;
-    border: 1px solid black;
-    border-radius: 5px;
-    color: var(--crema1);
-    background-color: var(--celeste1);
+    margin-bottom:10px;
+}
+
+
+.mas-vendidos h1{
+   text-align:center;
+   margin-bottom:20px;
+}
+
+.mas-vendidos .card{
+    border-radius:20px;
+}
+
+
+.novedades h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mas-vendidos .card:hover {
+    Box-shadow: 0 0 0 200px #8ce7ea inset;
+    transform: scale(1.3);
+    z-index:1000;
 }

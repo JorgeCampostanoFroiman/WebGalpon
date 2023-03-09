@@ -21,7 +21,7 @@ namespace WebGalpon
         ItemCarrito iten;
         protected void Page_Load(object sender, EventArgs e)
         {
-            items = (List<ItemCarrito>)Session["items"];
+            items = (List<ItemCarrito>)Session["itemsList"];
             if (items == null)
                 items = new List<ItemCarrito>();
 
