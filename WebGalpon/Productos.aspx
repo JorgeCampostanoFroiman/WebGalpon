@@ -4,7 +4,7 @@
 
     <link href="CSS/Productos.css" rel="Stylesheet" type="text/css" />
        <div style="margin:50px 0 30px 0;text-align:center">
-      <h1>Productos por menor</h1> 
+      <h1>Productos</h1> 
       </div>    
 
     <div class="searchbar">

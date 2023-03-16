@@ -30,7 +30,6 @@
 .details-title {
     margin-top: 2vw;
     text-align: center;
-    justify-content: center;
 }
 
 .principal-image {
@@ -67,8 +66,16 @@
 }
 
 .main-img {
-    width: 30vw;
+    max-width: 60%;
+    transition: 0.5s;
+    object-fit: cover;
 }
+
+.main-img:hover {
+    transform: scale(1.5);
+    z-index: 11000;
+}
+
 
 .related-images {
     display: flex;

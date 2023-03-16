@@ -16,7 +16,7 @@
                         <asp:TemplateField AccessibleHeaderText="true" HeaderText="Cantidad"> <ItemTemplate><asp:TextBox type="number" min="0" ID="TextCant" Text='<%# Eval("Cantidad") %>' class="cantidad" runat="server"></asp:TextBox></ItemTemplate></asp:TemplateField>
                         <asp:BoundField DataField="Precio" HeaderText="Precio Unitario" />  
                         <asp:BoundField DataField="Subtotal" HeaderText="Subtotal"/> 
-                        <asp:TemplateField AccessibleHeaderText="true" HeaderText="Imagen"> <ItemTemplate > <img src='<%# Eval("Imagen") %>' alt="" /> </ItemTemplate></asp:TemplateField>
+                        <asp:TemplateField AccessibleHeaderText="true" HeaderText="Imagen"> <ItemTemplate > <img style="height:100px;width:100px" src='<%# Eval("Imagen") %>' alt="" /> </ItemTemplate></asp:TemplateField>
                         <asp:TemplateField><ItemTemplate><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                         ControlToValidate="TextCant" Visible="false"
                         ValidationExpression="/^[0-9]$/"></asp:RegularExpressionValidator></ItemTemplate></asp:TemplateField>

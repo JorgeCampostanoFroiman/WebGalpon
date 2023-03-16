@@ -70,21 +70,29 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:-30px;font-size:large" >
             <div class="dropdown-header" style="font-size:x-large; text-align:center">Cuadros</div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=1">Cuadros rectangulares</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=1">Cuadros rectangulares 39x93</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=2">Cuadros escalonados</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=2">Cuadros escalonados 39x100</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=3">Cuadros individuales</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=11">Cuadros individuales</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=4">Plotters</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=5">Cuadros polipticos 60x140</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=3">Cuadros escalonados 60x100</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=4">Cuadros escalonados 60x140</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=6">Cuadros tripticos 60x80</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-header" style="font-size:x-large; text-align:center">Otros productos</div>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" style="font-size:large"href="Productos.aspx?tipo=5">Percheros y Portallaves</a>
+          <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=9">Percheros</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large"href="Productos.aspx?tipo=6">Relojes</a>
+            <a class="dropdown-item" style="font-size:large" ="Productos.aspx?tipo=8">Portallaves</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large"href="Productos.aspx?tipo=7">Tablas con frases</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=10">Relojes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?tipo=14">Tablas con frases</a>
             <div class="dropdown-divider"></div>
         </div>
       </li>
@@ -96,19 +104,19 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:213px" >
             <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=1">Populares</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2"">Paisajes</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2">Paisajes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2">Fútbol</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=3">Fútbol</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2"">Series y películas</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=4">Series y películas</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2"">Animales</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=5">Animales</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2"">Música</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=6">Música</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2"">Autos</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=7">Autos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=2"">Otros</a>
+            <a class="dropdown-item" style="font-size:large" href="Productos.aspx?cat=8">Otros</a>
             <div class="dropdown-divider"></div>
             
         </div>
@@ -120,7 +128,7 @@
         <a class="nav-link" href="Infomayoristas.aspx">Mayoristas</a>
       </li>
         <li class="nav-item" style="padding-right:5vh;font-size:large">
-        <a class="nav-link" href="Faq.aspx">Preguntas</a>
+        <a class="nav-link" href="Preguntas.aspx">Ayuda</a>
       </li>
     </ul>
                <div class="btn btn-light" runat="server" id="mostrarUsuario" style="margin-right:10px;">

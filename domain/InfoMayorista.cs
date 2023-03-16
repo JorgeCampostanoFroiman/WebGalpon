@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace domain
 {
-    public class Novedad
+    public class InfoMayorista
     {
-        public int IdNovedad { get; set; }
+        public int IdInfo { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
-        public string ImagenUrl { get; set; }
 
-        public Novedad(int id)
+        public string Descripcion2 { get; set; }
+
+        public InfoMayorista(int id)
         {
-            IdNovedad = id;
+            IdInfo = id;
         }
 
-        public Novedad()
+        public InfoMayorista()
         {
 
         }

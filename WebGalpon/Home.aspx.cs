@@ -13,16 +13,22 @@ namespace WebGalpon
     {
         public List<Producto> ListaProductos;
         public List<Producto> ListaProductosPopulares;
+        public List<Novedad> ListaNovedades;
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
+            NovedadNegocio novedad = new NovedadNegocio();
 
             try
             {
                 ListaProductos = negocio.Listar();
                 Session.Add("ListaProductos", ListaProductos);
-                ListaProductosPopulares = negocio.ListarPopulares();
+
+                ListaProductosPopulares = negocio.Listar();
                 Session.Add("ListaProductosPopulares", ListaProductosPopulares);
+
+                ListaNovedades = novedad.ListarNovedades();
+                Session.Add("ListaNovedades", ListaNovedades);
 
             }
             catch (Exception ex)

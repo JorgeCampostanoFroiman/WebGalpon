@@ -11,61 +11,43 @@ namespace WebGalpon
 {
 
 
-    public partial class DetalleProducto
+    public partial class WebForm1
     {
 
         /// <summary>
-        /// Control imagenProducto.
+        /// Control BarraBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imagenProducto;
+        protected global::System.Web.UI.WebControls.TextBox BarraBusqueda;
 
         /// <summary>
-        /// Control labelNombre.
+        /// Control BotonBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelNombre;
+        protected global::System.Web.UI.WebControls.Button BotonBusqueda;
 
         /// <summary>
-        /// Control labelPrecio.
+        /// Control Refrescar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelPrecio;
+        protected global::System.Web.UI.WebControls.Button Refrescar;
 
         /// <summary>
-        /// Control labelDescripcion.
+        /// Control LabelBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelDescripcion;
-
-        /// <summary>
-        /// Control btnCarrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCarrito;
-
-        /// <summary>
-        /// Control labelVolver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelVolver;
+        protected global::System.Web.UI.WebControls.Label LabelBusqueda;
     }
 }

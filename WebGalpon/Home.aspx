@@ -185,8 +185,29 @@
             <hr />
            <h1 class="section-title">Novedades</h1>
         <hr />
+            <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(16rem, 1fr) ); " >
+    <% foreach (domain.Novedad item in ListaNovedades)
+        {%>
+  <div class="card" style="height:250px; align-items:center; margin-right:15px; margin-bottom:15px; text-align:center;">
+    <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 100px; width:100px; margin-top:5px;" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"> <% =item.Titulo %></h5>
+      <a href="DetalleProducto.aspx?id=<% = item.Descripcion%>" class="btn btn-dark btn-sm">Ver Detalle</a>
+        
+    </div>
+  </div>
+      <% } %>
+ </div>
+        
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+</div>
+
+    </section>
+
+
+</asp:Content>
+<%--  
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -211,12 +232,4 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
-
-</div>
-
-    </section>
-
-
-</asp:Content>
-  
+</div>--%>

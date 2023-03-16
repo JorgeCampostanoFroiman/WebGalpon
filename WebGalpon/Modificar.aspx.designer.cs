@@ -11,7 +11,7 @@ namespace WebGalpon
 {
 
 
-    public partial class _Default
+    public partial class WebForm3
     {
     }
 }

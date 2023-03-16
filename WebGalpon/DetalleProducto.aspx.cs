@@ -14,6 +14,7 @@ namespace WebGalpon
     {
         public List<Producto> ListaProductos;
         public List<Producto> listaMedidas;
+        public List<Producto> listaRecomendados;
         bool cont = false;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,10 +22,10 @@ namespace WebGalpon
 
             if ((Request.QueryString["id"]) != null)
             {
-
-
                 try
                 {
+                    
+
                     listaMedidas = negocio.Variantes(Request.QueryString["id"]);
                     Session.Add("ListaProducto", listaMedidas);
 
@@ -57,27 +58,12 @@ namespace WebGalpon
                     labelPrecio.Text = "$" + Convert.ToInt32(seleccionado.PrecioVenta);
                     labelDescripcion.Text = "Descripcion: " + seleccionado.Descripcion;
                     imagenProducto.ImageUrl = seleccionado.ImagenUrl;
-                    labelVolver.Text = "Volver a categoría " + seleccionado.Tipo;
+                    labelVolver.Text = "Volver a: " + seleccionado.Tipo;
 
-                    // ListaProductos = negocio.Variantes(Convert.ToInt32(seleccionado.Codigo));
+
+                    listaRecomendados = negocio.Recomendados(seleccionado.Tipo);
+
                     ListaProductos = negocio.Listar();
-
-                    ddlVariantes.DataSource = ListaProductos;
-                    ddlVariantes.DataBind();
-                    ddlVariantes.DataTextField = "Codigo";
-                    ddlVariantes.DataValueField = "Codigo";
-                    ddlVariantes.DataBind();
-
-
-
-
-                    related1.Text = seleccionado.Tipo + " " + seleccionado.NombreProducto;
-                    related2.Text = seleccionado.Tipo + " " + seleccionado.NombreProducto;
-                    related3.Text = seleccionado.Tipo + " " + seleccionado.NombreProducto;
-
-                    relatedp1.Text = "$" + Convert.ToInt32(seleccionado.PrecioVenta);
-                    relatedp2.Text = "$" + Convert.ToInt32(seleccionado.PrecioVenta);
-                    relatedp3.Text = "$" + Convert.ToInt32(seleccionado.PrecioVenta);
 
                 }
 
@@ -93,18 +79,11 @@ namespace WebGalpon
             
         }
 
-        protected void ddlVariantes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string id = Convert.ToString(ddlVariantes.Text);
-            List<Producto> listado = (List<Producto>)Session["ListaProducto"];
-            Producto seleccionado = listado.Find(x => x.Codigo == id);
-
-            imagenProducto.ImageUrl = seleccionado.ImagenUrl;
-        }
 
         protected void btnCarrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("Carrito.aspx?id=https://cdn.shopify.com/s/files/1/0545/0425/9755/products/imamad5_720x.jpg?v=1663089446");
         }
+
     }
 }
