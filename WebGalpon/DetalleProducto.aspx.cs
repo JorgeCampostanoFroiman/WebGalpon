@@ -15,16 +15,20 @@ namespace WebGalpon
         public List<Producto> ListaProductos;
         public List<Producto> listaMedidas;
         public List<Producto> listaRecomendados;
+        public List<Categoria> listaCategorias;
+        public List<Tipo> listaTipos;
         bool cont = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
+            CategoriaNegocio catneg = new CategoriaNegocio();
+            TipoNegocio tipneg = new TipoNegocio(); 
 
             if ((Request.QueryString["id"]) != null)
             {
                 try
                 {
-                    
+                   
 
                     listaMedidas = negocio.Variantes(Request.QueryString["id"]);
                     Session.Add("ListaProducto", listaMedidas);
@@ -54,17 +58,41 @@ namespace WebGalpon
                     List<Producto> listado = (List<Producto>)Session["ListaProducto"];
                     Producto seleccionado = listado.Find(x => x.Codigo == id);
 
+                    
                     labelNombre.Text = seleccionado.Tipo + " " + seleccionado.NombreProducto;
                     labelPrecio.Text = "$" + Convert.ToInt32(seleccionado.PrecioVenta);
                     labelDescripcion.Text = "Descripcion: " + seleccionado.Descripcion;
                     imagenProducto.ImageUrl = seleccionado.ImagenUrl;
                     labelVolver.Text = "Volver a: " + seleccionado.Tipo;
+                    HL2.Text =  seleccionado.Tipo;
+                    HL3.Text =  seleccionado.Categoria;
 
 
                     listaRecomendados = negocio.Recomendados(seleccionado.Tipo);
 
                     ListaProductos = negocio.Listar();
 
+                    listaTipos = tipneg.Listar();
+                    listaCategorias = catneg.Listar();
+
+                    foreach (Tipo tipo in listaTipos)
+                    {
+                        if(tipo.Nombre == seleccionado.Tipo)
+                        {
+                            HL2.NavigateUrl = "~\\Productos.aspx?tipo=" + tipo.Id;
+                        }
+                    }
+
+                    foreach (Categoria cat in listaCategorias)
+                    {
+                        if(cat.Nombre == seleccionado.Categoria)
+                        {
+                            HL3.NavigateUrl = "~\\Productos.aspx?cat=" + cat.Id;
+                        }
+                    }
+
+
+                    
                 }
 
                 catch (Exception)

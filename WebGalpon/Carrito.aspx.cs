@@ -11,6 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
 using Org.BouncyCastle.Asn1.Ocsp;
 using iTextSharp.text;
+using Image = System.Web.UI.WebControls.Image;
 
 namespace WebGalpon
 {
@@ -30,13 +31,14 @@ namespace WebGalpon
                     dt = Session["items"] as DataTable;
                     if (dt == null)
                         dt = CreateDatatable();
-
+                        
                     GridViewCarrito.DataSource = dt;
                     GridViewCarrito.DataBind();
 
                     if (Request.QueryString["Id"] != null)
                     {
-                        TitleLabel.Text = "Carrito con tu pedido";
+                       
+
                         ActualizarButton.Visible = true;
 
                         if (ExisteProdEnDt(Request.QueryString["Id"]) == false)
@@ -49,6 +51,7 @@ namespace WebGalpon
                             SumarUnaUnidad(Request.QueryString["Id"]);
                             AlertLabel.Text = "El producto ya estaba en el carrito, se le sumó una unidad";
                         }
+                        CalcularTotales();
                     }
                     else
                     {
@@ -70,6 +73,48 @@ namespace WebGalpon
             }
         }
 
+
+        private void CalcularTotales()
+        {
+            int cantidadProductos = 0;
+            int totalPedido = 0;
+
+            foreach (GridViewRow row in GridViewCarrito.Rows)
+            {
+                HyperLink txtLink = row.Cells[1].FindControl("TextCodigo") as HyperLink;
+                string codigo = Convert.ToString(txtLink.Text);
+
+                TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
+
+
+                if (negocio.ExisteProducto(codigo) == true)
+                {
+                    Producto prod = negocio.BuscarProducto(codigo);
+
+                    row.Cells[2].Text = prod.NombreProducto;
+                    row.Cells[4].Text = Convert.ToString(prod.PrecioVenta);
+
+                    if (txtCant.Text != null)
+                    {
+                        int cant = Convert.ToInt32(txtCant.Text);
+                        row.Cells[5].Text = Convert.ToString(prod.PrecioVenta * cant);
+
+                        cantidadProductos += cant;
+                        totalPedido += Convert.ToInt32(prod.PrecioVenta * cant);
+
+                    }
+                }
+
+                DataTable Guardar = CargarDataTable();
+
+
+                Session.Add("items", Guardar);
+
+            }
+            LabelTotalPedido.Text = "Total: $" + totalPedido.ToString();
+            LabelTotalProductos.Text = "Total de Productos: " + cantidadProductos.ToString();
+        }
+
         private void SumarUnaUnidad(string id)
         {
             DataTable dt = CreateDatatable();
@@ -77,15 +122,19 @@ namespace WebGalpon
             foreach (GridViewRow row in GridViewCarrito.Rows)
             {
 
-                TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
                 string cant = txtCant.Text;
 
-                string fila = row.Cells[1].Text;
-                string codigo = row.Cells[2].Text;
-                string nombre = row.Cells[3].Text;
-                string precio = row.Cells[5].Text;
-                string imagen = row.Cells[6].Text;
-                string subtotal = row.Cells[6].Text;
+                Image imgen = row.Cells[6].FindControl("ImgCarro") as Image;
+                string imagen = imgen.ImageUrl;
+
+                HyperLink txtLink = row.Cells[1].FindControl("TextCodigo") as HyperLink;
+                string codigo = Convert.ToString(txtLink.Text); 
+
+                string fila = row.Cells[0].Text;
+                string nombre = row.Cells[2].Text;
+                string precio = row.Cells[4].Text;
+                string subtotal = row.Cells[5].Text;
                 
                 if (codigo == id)
                 {
@@ -99,7 +148,6 @@ namespace WebGalpon
                     dt.Rows.Add(fila, codigo, nombre, cant, precio, subtotal, imagen);
                     dt.AcceptChanges();
                 }
-
                 
             }
             Session.Add("items", dt);
@@ -139,11 +187,14 @@ namespace WebGalpon
             GridViewCarrito.DataBind();
         }
 
-        private bool ExisteProdEnDt(string codigo)
+        private bool ExisteProdEnDt(string cod)
         { 
             foreach (GridViewRow row in GridViewCarrito.Rows)
             {
-                if(codigo == row.Cells[2].Text){
+                HyperLink txtLink = row.Cells[1].FindControl("TextCodigo") as HyperLink;
+                string codigo = Convert.ToString(txtLink.Text);
+
+                if (cod == codigo){
                     return true;
                 }
             }
@@ -156,15 +207,19 @@ namespace WebGalpon
 
             foreach (GridViewRow row in GridViewCarrito.Rows)
             {
-                TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
                 string cant = txtCant.Text;
 
-                string fila = row.Cells[1].Text;
-                string codigo = row.Cells[2].Text;
-                string nombre = row.Cells[3].Text;
-                string precio = row.Cells[5].Text;
-                string imagen = row.Cells[6].Text;
-                string subtotal = row.Cells[6].Text;
+                Image imgen = row.Cells[6].FindControl("ImgCarro") as Image;
+                string imagen = imgen.ImageUrl;
+
+                HyperLink txtLink = row.Cells[2].FindControl("TextCodigo") as HyperLink;
+                string codigo = Convert.ToString(txtLink.Text);
+
+                string fila = row.Cells[0].Text;
+                string nombre = row.Cells[2].Text;
+                string precio = row.Cells[4].Text;
+                string subtotal = row.Cells[5].Text;
 
                 dt.Rows.Add(fila, codigo, nombre, cant, precio, subtotal, imagen);
                 dt.AcceptChanges();
@@ -188,42 +243,7 @@ namespace WebGalpon
 
         protected void ActualizarButton_Click1(object sender, EventArgs e)
         {
-                int cantidadProductos = 0;
-                int totalPedido = 0;
-
-                foreach (GridViewRow row in GridViewCarrito.Rows)
-                {
-                    string txtCodigo = row.Cells[2].Text;
-
-                    TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
-
-
-                    if (negocio.ExisteProducto(txtCodigo) == true)
-                    {   
-                        Producto prod = negocio.BuscarProducto(txtCodigo);
-
-                        row.Cells[3].Text = prod.NombreProducto;
-                        row.Cells[5].Text = Convert.ToString(prod.PrecioVenta);
-
-                        if (txtCant.Text != null)
-                        {
-                            int cant = Convert.ToInt32(txtCant.Text);
-                            row.Cells[6].Text = Convert.ToString(prod.PrecioVenta * cant);
-
-                            cantidadProductos += cant;
-                            totalPedido += Convert.ToInt32(prod.PrecioVenta * cant);
-
-                        }
-                    }
-
-                DataTable Guardar = CargarDataTable();
-
-
-                Session.Add("items", Guardar);
-
-            }
-                LabelTotalPedido.Text = "Total: $" + totalPedido.ToString();
-                LabelTotalProductos.Text = "Total de Productos: " + cantidadProductos.ToString();
+            CalcularTotales();
         }
 
         protected void GridViewCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -238,13 +258,15 @@ namespace WebGalpon
             {
                 if (row.RowIndex != index)
                 {
-                    TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                    TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
                     string cant = txtCant.Text;
+
+                    Image imgen = row.Cells[6].FindControl("ImgCarro") as Image;
+                    string imagen = imgen.ImageUrl;
 
                     string codigo = row.Cells[2].Text;
                     string nombre = row.Cells[3].Text;
                     string precio = row.Cells[5].Text;
-                    string imagen = row.Cells[6].Text;
                     string subtotal = row.Cells[6].Text;
 
                     dt.Rows.Add(filaNueva, codigo, nombre, cant, precio, subtotal, imagen);
@@ -262,5 +284,6 @@ namespace WebGalpon
             GridViewCarrito.DataSource = dt;
             GridViewCarrito.DataBind();
         }
-     }
+
+    }
 }

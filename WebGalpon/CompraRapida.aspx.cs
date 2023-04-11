@@ -21,6 +21,11 @@ using System.Net;
 using System.Net.Mail;
 using System.Xml.Linq;
 using Font = iTextSharp.text.Font;
+using Control = System.Web.UI.Control;
+using iTextSharp.text.html.simpleparser;
+using System.Text;
+using System.Web.UI.HtmlControls;
+using Image = System.Web.UI.WebControls.Image;
 
 namespace WebGalpon
 {
@@ -64,16 +69,20 @@ namespace WebGalpon
             {
                 if (row.RowIndex != index)
                 {
-                    TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                    TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
                     string cant = txtCant.Text;
 
-                    string codigo = row.Cells[2].Text;
-                    string nombre = row.Cells[3].Text;
-                    string precio = row.Cells[5].Text;
-                    string imagen = row.Cells[6].Text;
-                    string subtotal = row.Cells[6].Text;
+                    Image imgen = row.Cells[6].FindControl("ImgCarro") as Image;
+                    string imagen = imgen.ImageUrl;
 
-                    dt.Rows.Add(filaNueva, codigo, nombre, cant, precio, subtotal);
+
+
+                    string codigo = row.Cells[1].Text;
+                    string nombre = row.Cells[2].Text;
+                    string precio = row.Cells[4].Text;
+                    string subtotal = row.Cells[5].Text;
+
+                    dt.Rows.Add(filaNueva, codigo, nombre, cant, precio, subtotal, imagen);
                     dt.AcceptChanges();
 
                     filaNueva++;
@@ -96,24 +105,24 @@ namespace WebGalpon
 
             foreach (GridViewRow row in GridView1.Rows)
             {
-                TextBox txtCodigo = row.Cells[2].FindControl("TextCodigo") as TextBox;
+                TextBox txtCodigo = row.Cells[1].FindControl("TextCodigo") as TextBox;
                 string text = txtCodigo.Text;
 
-                TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
 
 
                 if (negocio.ExisteProducto(text) == true)
                 {
                     Producto prod = negocio.BuscarProducto(text);
 
-                    row.Cells[3].Text = prod.NombreProducto;
-                    row.Cells[5].Text = Convert.ToString(prod.PrecioVenta);
+                    row.Cells[2].Text = prod.NombreProducto;
+                    row.Cells[4].Text = Convert.ToString(prod.PrecioVenta);
 
                     if (txtCant.Text != null)
                     {
 
                         int cant = Convert.ToInt32(txtCant.Text);
-                        row.Cells[6].Text = Convert.ToString(prod.PrecioVenta * cant);
+                        row.Cells[5].Text = Convert.ToString(prod.PrecioVenta * cant);
 
                         cantidadProductos += cant;
                         totalPedido += Convert.ToInt32(prod.PrecioVenta * cant);
@@ -122,9 +131,12 @@ namespace WebGalpon
                 }
 
             }
+            DataTable DeTe = CargarDataTable();
+            GridView1.DataSource = DeTe;
+            GridView1.DataBind();
+
             LabelTotalPedido.Text = "Total: $" + totalPedido.ToString();
             LabelTotalProductos.Text = "Total de Productos: " + cantidadProductos.ToString();
-
         }
 
         private DataTable CreateDatatable()
@@ -136,6 +148,7 @@ namespace WebGalpon
             dt.Columns.Add("Cantidad");
             dt.Columns.Add("Precio");
             dt.Columns.Add("Subtotal");
+            dt.Columns.Add("Imagen");
             dt.AcceptChanges();
             return dt;
         }
@@ -145,7 +158,7 @@ namespace WebGalpon
             DataTable dt = CreateDatatable();
             for (int i = 0; i < 10; i++)
             {
-                dt.Rows.Add((i + 1).ToString(), "0", " ", "0", " ", " ");
+                dt.Rows.Add((i + 1).ToString(), "0", " ", "0", " ", " ", "");
                 dt.AcceptChanges();
             }
 
@@ -169,7 +182,7 @@ namespace WebGalpon
                 fila++;
             }
 
-            dt.Rows.Add(fila.ToString(), "0", " ", " ", " ", " ");
+            dt.Rows.Add(fila.ToString(), "0", " ", " ", " ", " ", " ");
             dt.AcceptChanges();
 
 
@@ -183,18 +196,27 @@ namespace WebGalpon
 
             foreach (GridViewRow row in GridView1.Rows)
             {
-                TextBox txtCodigo = row.Cells[2].FindControl("TextCodigo") as TextBox;
+                TextBox txtCodigo = row.Cells[1].FindControl("TextCodigo") as TextBox;
                 string codigo = txtCodigo.Text;
 
-                TextBox txtCant = row.Cells[4].FindControl("TextCant") as TextBox;
+                TextBox txtCant = row.Cells[3].FindControl("TextCant") as TextBox;
                 string cant = txtCant.Text;
 
-                string nombre = row.Cells[3].Text;
-                string precio = row.Cells[5].Text;
-                string subtotal = row.Cells[6].Text;
-                string fila = row.Cells[1].Text;
+                string imagen = "";
 
-                dt.Rows.Add(fila, codigo, nombre, cant, precio, subtotal);
+                if (negocio.ExisteProducto(codigo) == true)
+                {
+                   Producto prod =  negocio.BuscarProducto(codigo);
+                   imagen = prod.ImagenUrl;
+                }
+
+
+                string nombre = row.Cells[2].Text;
+                string precio = row.Cells[4].Text;
+                string subtotal = row.Cells[5].Text;
+                string fila = row.Cells[0].Text;
+
+                dt.Rows.Add(fila, codigo, nombre, cant, precio, subtotal, imagen);
                 dt.AcceptChanges();
             }
             return dt;
@@ -212,6 +234,7 @@ namespace WebGalpon
         {
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
+            
 
             DataTable dt = CargarDataTable();
 
@@ -247,7 +270,15 @@ namespace WebGalpon
                     {
                         for (int h = 0; h < dt.Columns.Count; h++)
                         {
+                        if (r[5].ToString() != "0" && r[5].ToString() != " ")
+                        {
                             table.AddCell(new Phrase(r[h].ToString(), font9));
+                        }
+                        else
+                        {
+                            
+
+                        }
                         }
                     }
                 }
@@ -301,5 +332,56 @@ namespace WebGalpon
             }
             
         }
+
+
+        public override void VerifyRenderingInServerForm (Control control)
+        {
+
+        }
+
+        protected void ExcelButton_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            Page page = new Page();
+            HtmlForm form = new HtmlForm();
+
+            GridView1.EnableViewState = false;
+            page.EnableEventValidation = false;
+            page.DesignerInitialize();
+            page.Controls.Add(form);
+            form.Controls.Add(GridView1);
+            page.RenderControl(htw);
+
+            Page.Response.Clear();
+            Page.Response.Buffer = true;
+            Page.Response.ContentType = "application/vnd.ms-excel";
+
+            Page.Response.AddHeader("Content-Disposition", "attachment; filename= PedidoExcel.xls");
+            Page.Response.Charset = "UTF-8";
+            Page.Response.ContentEncoding = Encoding.Default;
+            Page.Response.Write(sb.ToString());
+            Page.Response.End();
+        }   
+
+        protected void WordButon_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.AddHeader("content-disposition", "attachment;filename=PedidoWord.doc");
+            Response.ContentType = "apllication/ms-word";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            GridView1.AllowPaging = false;
+            GridView1.DataBind();
+            GridView1.RenderControl(hw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+        }
+
+       
     }
 }

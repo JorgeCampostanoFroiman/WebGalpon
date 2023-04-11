@@ -6,14 +6,14 @@
        <div style="margin:50px 0 30px 0;text-align:center">
       <h1>Productos</h1> 
       </div>    
-
+    <hr />
     <div class="searchbar">
         <asp:TextBox ID="BarraBusquedaProd" placeholder="Búsqueda" runat="server"></asp:TextBox>
         <asp:Button ID="BotonBusquedaProd" OnClick="BotonBusquedaProd_Click" runat="server" class="btn btn-dark btn-sm" Text="Buscar" AutoPostBack="true"/>
         <asp:Button ID="RefrescarProd" OnClick="RefrescarProd_Click" runat="server" class="btn btn-dark btn-sm" Text="Refrescar" AutoPostBack="true"/>
     </div>
-
-    <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(16rem, 1fr) ); " >
+    <hr />
+    <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) ); " >
     <% foreach (domain.Producto item in listaMinoristas)
         {%>
   <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center;">

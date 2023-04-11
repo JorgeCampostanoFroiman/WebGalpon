@@ -3,19 +3,17 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <link href="CSS/CONTACT.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/Contact.css" rel="Stylesheet" type="text/css" />
 
     
-
-    <body class="main-bg">
         <hr />
-        <div class="contact-title"><h1>Contacto</h1></div>
+        <div class="contact-title" ><h1>Contacto</h1></div>
         <hr />
-        <div class="contact-form">
             <div class="contact-subtitle">
-                <h3 style="width:80%;margin:auto;">Dejanos tu nombre y mensaje y responderemos a la brevedad!</h3>
+                <h3 style="width:80%;margin:auto;color:#343A40">Dejanos tu nombre y mensaje y responderemos a la brevedad!</h3>
             </div>
-
+   
+    
             <div class="contact-name">
                 <asp:TextBox runat="server" ID="NameBox" type="text" CssClass="form-control" placeholder="Nombre" required=""></asp:TextBox>
             </div>
@@ -28,14 +26,13 @@
                  <asp:TextBox runat="server" ID="SubjectBox" type="text" CssClass="form-control" placeholder="Asunto" required=""></asp:TextBox>       
             </div>
 
-            <div class="contact-text">
-                <asp:TextBox runat="server" ID="MessageBox" type="text" CssClass="form-control" placeholder="Mensaje" required=""></asp:TextBox>
+            <div class="contact-text" style="margin-bottom:20px;">
+                <asp:TextBox runat="server" ID="MessageBox" type="text" CssClass="text-area" rows="3" placeholder="Mensaje" required=""></asp:TextBox>
             </div>  
             
-            <div class="contact-submit">
+            <div class="contact-submit" style="margin-top:20px";>
                 <asp:Button type="submit" CssClass="form-button" runat="server" ID="SendButton" Text="Enviar" OnClick="SendButton_Click" />
             </div>  
-        </div>
 
        
          <div class="info-contacto">
@@ -55,8 +52,7 @@
              <hr />
         </div>
     
-                       
-        </body>
+                 
     </asp:Content> 
 <%--<div class="login-container text-c animated flipInX">            
                     <p class="form-text" color="red">Contactanos!</p>

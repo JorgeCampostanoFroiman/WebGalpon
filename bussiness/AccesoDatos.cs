@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,11 @@ namespace bussiness
         private SqlCommand comando;
         private SqlDataReader lector;
 
+
         public AccesoDatos()
         {
-            conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=GALPONDELOSCUADROS_DB; integrated security=sspi");
+            conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
+            // conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=GALPONDELOSCUADROS_DB; integrated security=sspi");
             comando = new SqlCommand();
         }
 

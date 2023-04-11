@@ -76,7 +76,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 70vw;
 }
 
 

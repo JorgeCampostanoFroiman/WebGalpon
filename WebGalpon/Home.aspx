@@ -3,49 +3,55 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
-    <link href="css/Home.css" rel="Stylesheet" type="text/css" />
+    <link href="css/home.css" rel="Stylesheet" type="text/css" />
     <hr />
     <section id="productos">
         <div class="contenedor">
             <h1 class="section-title">¡Bienvenido al Galpón de los Cuadros!</h1>
             <p>¡A continuación podés ver todos los productos que realizamos!</p>
             <hr />
-            <ul>
+            <ul style="display:grid;">
                 <li>
                     <img src="https://i.ibb.co/nL5NGLb/Basti2-removebg-preview.png">
                     <p margin-top="5px">Bastidores</p>
-                    <a>Ver más</a>
+                    <a href="Productos.aspx?tipo=16">Ver más</a>
                 </li>
                 <li>
                     <img src="https://i.ibb.co/ZxNkbqd/Cuadro-removebg-preview.png">
-                    <p>Cuadros</p>
-                    <a>Ver más</a>
+                    <p>Cuadros Rectangulares</p>
+                    <a href="Productos.aspx?tipo=51">Ver más</a>
+                    
+                </li>
+                <li>
+                    <img src="https://i.ibb.co/ZxNkbqd/Cuadro-removebg-preview.png">
+                    <p>Cuadros Escalonados</p>
+                    <a href="Productos.aspx?tipo=52">Ver más</a>
                     
                 </li>
                 <li>
                     <img src="https://i.ibb.co/h7SkM2q/R001.png">
                     <p>Relojes</p>
-                    <a>Ver más</a>
+                    <a href="Productos.aspx?tipo=10">Ver más</a>
                 </li>
                 <li>
                     <img src="https://i.ibb.co/yqW0pWv/perchero-removebg-preview.png">
                     <p>Percheros</p>
-                    <a>Ver más</a>
+                    <a href="Productos.aspx?tipo=9">Ver más</a>
                 </li>
                 <li>
                     <img src="https://i.ibb.co/Gsfy1qR/portash-removebg-preview.png">
                     <p>Portallaves</p>
-                    <a>Ver más</a>
+                    <a href="Productos.aspx?tipo=8">Ver más</a>
                 </li>
                 <li>
                     <img src="https://i.ibb.co/gg81Gr6/Frases-removebg-preview.png">
                     <p>Tablas con frases</p>
-                    <a>Ver más</a>
+                    <a href="Productos.aspx?tipo=15">Ver más</a>
                 </li>
                 <li>
                     <img src="https://i.ibb.co/n75c1x6/Indi.png">
                     <p>Tablas individuales</p>
-                    <a>Ver más</a>
+                    <a href="Productos.aspx?tipo=11">Ver más</a>
                 </li>
                 
             </ul>

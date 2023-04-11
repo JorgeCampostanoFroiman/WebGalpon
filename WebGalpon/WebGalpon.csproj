@@ -127,6 +127,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CSS\Carrito.css" />
+    <Content Include="CSS\CompraRapida.css" />
     <Content Include="CSS\Contact.css" />
     <Content Include="CSS\Default.css" />
     <Content Include="CSS\detalleproducto.css" />
@@ -153,6 +155,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Preguntas.aspx" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Sugerencias.aspx" />
     <Content Include="Modificar.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

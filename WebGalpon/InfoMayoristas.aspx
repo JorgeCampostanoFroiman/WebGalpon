@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Productos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InfoMayoristas.aspx.cs" Inherits="WebGalpon.InfoMayoristas" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
-    <link href="CSS/Preguntas.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/FAQ.css" rel="Stylesheet" type="text/css" />
     <div style="text-align:center;align-items:center;width:60vw;">
 
         <div style="margin:50px 0 30px 0;text-align:center;background-color:white;width:60vw;padding:10px;border: 2px solid grey;">
@@ -24,25 +24,47 @@
 
             <asp:Label runat="server" ID="LabelBusqueda" Font-Size="XX-Large"  Visible="false"></asp:Label>
 
-    <% foreach (domain.InfoMayorista item in listaMayo)
-        {%>
-      <h3 style="color:slategrey;width:60vw;height:5vh;text-align:left" class="card-title"> <% =item.Titulo %></h3>
-        <hr />
-      <p style="width:60vw;height:5vh;text-align:right;align-content:center;margin-bottom:10px" class="card-text"><% =item.Descripcion %></p>
-      <p style="width:60vw;height:5vh;text-align:right;align-content:center;margin-bottom:10px" class="card-text"><% =item.Descripcion2 %></p>
-      <% } %>
-            </div>
-       <hr />
     
-        
-    <div class="banner-info">
+           <div class="accordion-body">
+  <div class="accordion">
+      <hr>
+      <% foreach (domain.InfoMayorista item in listaMayo)
+        {%>
+
+
+    
+    <div class="container">
+      <div class="label"><%= item.Titulo %></div>
+      <div class="content"><%= item.Descripcion + " " + item.Descripcion2 %></div>
+    </div>
+      <hr>
+       <% } %>
+
+  </div>
+  </div>
+
+ 
+
+
+     
+            </div>
+     <script src="index.js" type="text/javascript"></script>
+        <script>
+            const accordion = document.getElementsByClassName('container');
+
+            for (i = 0; i < accordion.length; i++) {
+                accordion[i].addEventListener('click', function () {
+                    this.classList.toggle('active')
+                })
+            }
+        </script>
+    <div class="banner-info" style="margin:30px;">
            <h1 style="color:slategrey">Si te queda alguna duda acerca de la compra mayorista...</h1>
            <h2 style="color:slategrey">...podes contactarnos con nosotros... <a class="whatsanchor" href="https://wa.me/1133467922">Acá</a></h2>
        </div>
 
+
         </div>
-
-
 </asp:Content>
 
 

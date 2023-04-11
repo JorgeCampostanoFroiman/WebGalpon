@@ -51,6 +51,15 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Button ActualizarButton;
 
         /// <summary>
+        /// Control ProductosButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ProductosButton;
+
+        /// <summary>
         /// Control LabelTotalProductos.
         /// </summary>
         /// <remarks>
@@ -69,12 +78,21 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Label LabelTotalPedido;
 
         /// <summary>
-        /// Control ProductosButton.
+        /// Control PdfButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ProductosButton;
+        protected global::System.Web.UI.WebControls.Button PdfButton;
+
+        /// <summary>
+        /// Control EmailButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EmailButton;
     }
 }

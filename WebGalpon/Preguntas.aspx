@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Preguntas.aspx.cs" Inherits="WebGalpon.WebForm1" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
     <div class="container" style="text-align:center;align-items:center;width:60vw;">
-    <link href="CSS/Preguntas.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/FAQ.css" rel="Stylesheet" type="text/css" />
 
 
        <div style="margin:50px 0 30px 0;text-align:center;background-color:white;width:60vw;padding:10px;border: 2px solid grey;">
@@ -25,13 +25,34 @@
 
             <asp:Label runat="server" ID="LabelBusqueda" Font-Size="XX-Large"  Visible="false"></asp:Label>
 
-    <% foreach (domain.PreguntaFrecuente item in listaPreguntas)
+     <div class="accordion-body">
+  <div class="accordion">
+      <hr>
+      <% foreach (domain.PreguntaFrecuente item in listaPreguntas)
         {%>
-      <h3 style="color:slategrey;width:60vw;height:5vh;text-align:left" class="card-title"> <% =item.Pregunta %></h3>
-        <hr />
-      <p style="width:60vw;height:5vh;text-align:right;align-content:center;margin-bottom:10px" class="card-text"><% =item.Respuesta %></p>
-        <hr />
-      <% } %>
+
+
+    
+    <div class="container">
+      <div class="label"><%= item.Pregunta %></div>
+      <div class="content"><%= item.Respuesta  %></div>
+    </div>
+      <hr>
+       <% } %>
+
+  </div>
+  </div>
             </div>
         </div>
+
+    <script src="index.js" type="text/javascript"></script>
+        <script>
+            const accordion = document.getElementsByClassName('container');
+
+            for (i = 0; i < accordion.length; i++) {
+                accordion[i].addEventListener('click', function () {
+                    this.classList.toggle('active')
+                })
+            }
+        </script>
 </asp:Content>

@@ -52,7 +52,7 @@ namespace bussiness
             {
 
 
-                datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo");
+                datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Categoria.NombreCategoria, Categoria.IdCategoria, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -64,6 +64,7 @@ namespace bussiness
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     aux.Tipo = (string)datos.Lector["NombreTipo"];
+                    aux.Categoria = (string)datos.Lector["NombreCategoria"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -84,7 +85,7 @@ namespace bussiness
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.Codigo in ('901R', '902R', '903R', '904R')");
+                datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria, Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.Codigo in ('901R', '902R', '903R', '904R')");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -96,6 +97,7 @@ namespace bussiness
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     aux.Tipo = (string)datos.Lector["NombreTipo"];
+                    aux.Categoria = (string)datos.Lector["NombreCategoria"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -119,48 +121,56 @@ namespace bussiness
                 switch (str)
                 {
                     case "1":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro Rectangular' or Tipo.NombreTipo = 'Cuadro x6';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria, Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro Rectangular' or Tipo.NombreTipo = 'Cuadro x6';");
                         break;
 
                     case "2":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado';");
                         break;
 
                     case "3":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado 2';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado 2';");
                         break;
 
                     case "4":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado 3';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado 3';");
                         break;
 
                     case "5":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro poliptico';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro poliptico';");
                         break;
 
                     case "6":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro triptico;");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro triptico';");
                         break;
 
                     case "7":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro x6';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro x6';");
                         break;
                     case "8":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Portallave';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Portallave';");
                         break;
                     case "9":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Perchero';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Perchero';");
                         break;
                     case "10":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Reloj 32';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Reloj 32';");
                         break;
                     case "11":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Individual 2740' or Tipo.NombreTipo = 'Individual 2030' or Tipo.NombreTipo = 'Individual 2760';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Individual 2740' or Tipo.NombreTipo = 'Individual 2030' or Tipo.NombreTipo = 'Individual 2760';");
                         break;
                     case "14":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Tablas con frases';");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Tablas con frases';");
                         break;
-
+                    case "16":
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Bastidor';");
+                        break;
+                    case "51":
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro Rectangular' or Tipo.NombreTipo = 'Cuadro poliptico' or Tipo.NombreTipo = 'Cuadro x6';");
+                        break;
+                    case "52":
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Tipo.NombreTipo = 'Cuadro escalonado' or Tipo.NombreTipo = 'Cuadro escalonado 2' or Tipo.NombreTipo = 'Cuadro escalonado 3';");
+                        break;
                     default:
                         break;
                 }
@@ -176,6 +186,7 @@ namespace bussiness
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     aux.Tipo = (string)datos.Lector["NombreTipo"];
+                    aux.Categoria = (string)datos.Lector["NombreCategoria"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -198,29 +209,29 @@ namespace bussiness
                 switch (str)
                 {
                     case "1":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 1");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 1");
                         break;
 
                     case "2":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 2");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 2");
                         break;
                     case "3":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 3");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 3");
                         break;
                     case "4":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 4");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 4");
                         break;
                     case "5":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 5");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 5");
                         break;
                     case "6":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 6");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 6");
                         break;
                     case "7":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 7");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 7");
                         break;
                     case "8":
-                        datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 8");
+                        datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria,Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.IdCategoria = 8");
                         break;
                     default:
                         break;
@@ -237,6 +248,7 @@ namespace bussiness
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     aux.Tipo = (string)datos.Lector["NombreTipo"];
+                    aux.Categoria = (string)datos.Lector["NombreCategoria"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -258,7 +270,7 @@ namespace bussiness
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.Codigo = '" + codigo + "'");
+                datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria, Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.Codigo = '" + codigo + "'");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -270,6 +282,8 @@ namespace bussiness
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     aux.Tipo = (string)datos.Lector["NombreTipo"];
+                    aux.Categoria = (string)datos.Lector["NombreCategoria"];
+
                     lista.Add(aux);
                 }
                 return lista;

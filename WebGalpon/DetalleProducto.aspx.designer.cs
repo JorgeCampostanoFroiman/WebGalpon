@@ -15,6 +15,24 @@ namespace WebGalpon
     {
 
         /// <summary>
+        /// Control HL2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HL2;
+
+        /// <summary>
+        /// Control HL3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HL3;
+
+        /// <summary>
         /// Control imagenProducto.
         /// </summary>
         /// <remarks>

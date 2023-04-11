@@ -16,11 +16,19 @@ namespace WebGalpon
         public List<Producto> listaMayoristas;
         public List<Producto> ProductoBuscar;
         public List<Producto> Busqueda;
+        public List<Tipo> listaTipos;
+        public List<Categoria> listaCategorias;
 
         public List<ItemCarrito> items;
         ItemCarrito iten;
         protected void Page_Load(object sender, EventArgs e)
         {
+            TipoNegocio tiponegocio = new TipoNegocio();
+            CategoriaNegocio categorianegocio = new CategoriaNegocio();
+
+            listaTipos = tiponegocio.Listar();
+            listaCategorias = categorianegocio.Listar();
+
             items = (List<ItemCarrito>)Session["itemsList"];
             if (items == null)
                 items = new List<ItemCarrito>();

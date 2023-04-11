@@ -20,6 +20,34 @@
     border-color: var(--violeta1);
 }
 
+.link{
+    color:black;
+    margin:auto;
+    text-align:center;
+    text-decoration:none;
+}
+
+    .link:hover {
+        cursor: grab;
+        transform: scale(1.8);
+        color: var(--violeta1);
+        text-decoration: none;
+    }
+
+
+.svg {
+    color: #25D366;
+}
+
+.breadcrumb {
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    border: 2px solid var(--violeta1);
+    background-color: var(--crema1);
+}
+
 .cardflex2{
     display:flex;
    flex-direction:row;
@@ -75,6 +103,8 @@
     transform: scale(1.5);
     z-index: 11000;
 }
+
+
 
 
 .related-images {

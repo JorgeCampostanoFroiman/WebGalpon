@@ -14,18 +14,14 @@
     align-items:center;
 }
 #productos ul {
-    width:80vw;
     display: grid;
     list-style: none;
-    grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
-    grid-column: auto;
+    grid-template-columns: repeat(auto-fill, [col-start] 222px[col-end]);
     text-align: center;
     margin: auto;
     row-gap: 20px;
     column-gap: 60px;
     margin-top: 40px;
-    border: 2px solid black;
-    padding-right:40px;
 }
 #productos li{
     border: 2px solid black;
@@ -171,7 +167,15 @@
 }
 
 .mas-vendidos .card:hover {
-    Box-shadow: 0 0 0 200px #8ce7ea inset;
-    transform: scale(1.3);
-    z-index:1000;
+    box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    z-index: 1000;
+}
+
+.novedades .card:hover {
+    box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    z-index: 1000;
 }

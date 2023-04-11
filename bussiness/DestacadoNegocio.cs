@@ -1,6 +1,5 @@
 ﻿using domain;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace bussiness
 {
-    public class InfoMayoristaNegocio
+    public class DestacadoNegocio
     {
-        public List<InfoMayorista> Listar()
+        public List<Destacado> Listar()
         {
-            List<InfoMayorista> lista = new List<InfoMayorista>();
+            List<Destacado> lista = new List<Destacado>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select Titulo, Descripcion, Descripcion2, IdInfo from InfoMayorista");
+                datos.setearConsulta("select Nombre, Descripcion, Codigo, IdDestacado from Destacados");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    InfoMayorista aux = new InfoMayorista();
-                    aux.Titulo = (string)datos.Lector["Titulo"];
+                    Destacado aux = new Destacado();
+                    aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Descripcion2 = (string)datos.Lector["Descripcion2"];
-                    aux.IdInfo = (int)datos.Lector["IdInfo"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.IdDestacado = (int)datos.Lector["IdDestacado"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -39,12 +38,12 @@ namespace bussiness
             }
         }
 
-        public void AgregarInfo(string titulo, string desc, string desc2)
+        public void Agregar(string nombre, string desc, string codigo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into InfoMayorista(Titulo, Descripcion, Descripcion2) values('" + titulo + "','" + desc + "','" + desc2 + "')");
+                datos.setearConsulta("insert into Destacados(Nombre, Descripcion, Codigo) values('" + nombre + "','" + desc + "','" + codigo + "')");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -57,12 +56,12 @@ namespace bussiness
             }
         }
 
-        public void ModificarInfo(string titulo, string desc, string desc2, int id)
+        public void Modificar(string nombre, string desc, string codigo, int id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("update InfoMayorista \r\n set Titulo = '" + titulo + "', Descripcion = '" +desc+ "'  , Descripcion2 = '" + desc2 + "'\r\nWhere IdInfo = "+id+"");
+                datos.setearConsulta("update Destacados \r\n set Titulo = '" + nombre + "', Descripcion = '" + desc + "'  , Descripcion2 = '" + codigo + "'\r\nWhere IdDestacado = " + id + "");
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -75,12 +74,12 @@ namespace bussiness
             }
         }
 
-        public void EliminarInfo(int codigo)
+        public void Eliminar(int codigo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("delete from InfoMayorista where IdInfo = "+codigo);
+                datos.setearConsulta("delete from Destacados where IdDestacado = " + codigo);
                 datos.ejecutarLectura();
             }
             catch (Exception ex)
@@ -96,3 +95,4 @@ namespace bussiness
 
     }
 }
+
