@@ -33,8 +33,11 @@ body {
 }
 
 .contact-form {
-    color: WHITE;
+    background-color: WHITE;
     margin: auto;
+    padding: 4vh;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
 }
 
 .form-control {
@@ -58,6 +61,7 @@ body {
     overflow: hidden;
     overflow-wrap: normal;
     overflow-wrap: break-word;
+    border-radius:15px;
 }
 
 .contact-text, .contact-subject, .contact-email, .contact-name, .contact-submit {
@@ -101,7 +105,7 @@ body {
     height: 15vh;
     text-align: center;
     margin: auto;
-    border-bottom: 1px solid var(--violeta1);
+    /*border-bottom: 1px solid var(--violeta1);*/
     padding-top: 30px;
     color: var(--violeta1);
     display: flex;

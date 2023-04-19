@@ -3,12 +3,17 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
-    <link href="css/home.css" rel="Stylesheet" type="text/css" />
+    <link href="css/Home.css" rel="Stylesheet" type="text/css" />
     <hr />
     <section id="productos">
-        <div class="contenedor">
-            <h1 class="section-title">¡Bienvenido al Galpón de los Cuadros!</h1>
+        
+
+            <div class="content-title" style="margin:50px 0 30px 0;text-align:center">
+                <h1 class="section-title">¡Bienvenido al Galpón de los Cuadros!</h1>
             <p>¡A continuación podés ver todos los productos que realizamos!</p>
+
+            </div>
+            <div class="content-form">
             <hr />
             <ul style="display:grid;">
                 <li>
@@ -61,7 +66,7 @@
     <hr />
 
     <section id="servicios">
-        <div class="contenedor">
+        <div class="content-form">
             <h1 class="section-title" style="margin-bottom:40px;">¿Qué hacemos?</h1>
             <hr />
             <div class="trabajos" id="trabajos">
@@ -127,7 +132,7 @@
     </section>
 
     <section class="envios">
-        <div class="contenedor">
+        <div class="content-form">
             <hr/>
            <h1 class="section-title" style="margin-bottom:30px">¿De dónde sos?</h1>
             <hr />
@@ -155,7 +160,7 @@
     </section>
 
     <section class="mas-vendidos">
-        <div class="container">
+        <div class="content-form">
             <hr/>
            <h1 class="section-title">Productos destacados!</h1>
             <hr />
@@ -187,7 +192,7 @@
 
 
     <section class="novedades">
-        <div class="container">
+        <div class="content-form">
             <hr />
            <h1 class="section-title">Novedades</h1>
         <hr />

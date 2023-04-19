@@ -78,21 +78,21 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.Label LabelTotalPedido;
 
         /// <summary>
-        /// Control PdfButton.
+        /// Control PdfButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PdfButton;
+        protected global::System.Web.UI.WebControls.ImageButton PdfButton1;
 
         /// <summary>
-        /// Control EmailButton.
+        /// Control EmailButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EmailButton;
+        protected global::System.Web.UI.WebControls.ImageButton EmailButton1;
     }
 }

@@ -3,14 +3,17 @@
 
     <link href="CSS/CompraRapida.css" rel="Stylesheet" type="text/css" />
 
-        <div style="margin:50px 0 30px 0;text-align:center">
+        <div class="contact-title" style="margin:50px 0 30px 0;text-align:center">
       <h1> Sección de compra rápida  </h1> 
       </div>
+
+
+
     <hr />
-    <h3>Debes conocer los códigos del catálogo para usar esta sección</h3>
+    <div class="contact-subtitle"><h3>Debes conocer los códigos del catálogo para usar esta sección</h3></div>
     <hr />
-    <div style="text-align:center;">
-    <table class="table table-striped mt-5" style="background-color:#b6d1d4;text-align:center;" id="">
+    <div style="text-align:center;" id="tabla">
+    <table class="table table-striped mt-5" style="background-color:#b6d1d4;text-align:center;" id="table">
   
           <asp:GridView ID="GridView1" CssClass="GridView" runat="server"  AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting" >
                     <Columns>
@@ -45,21 +48,25 @@
         <asp:Button ID="AgregarFilaButton" runat="server" CssClass="btn btn-dark" Text="AgregarFila" OnClick="AgregarFilaButton_Click"/>
         <asp:Button ID="Agregar10FilasButton" runat="server" CssClass="btn btn-dark" Text="Agregar 10 Filas" OnClick="Agregar10FilasButton_Click"/>
     <hr />
-        <asp:Label runat="server" ID="LabelTotalProductos"></asp:Label>
-        <asp:Label runat="server" ID="LabelTotalPedido"></asp:Label>
+        <asp:Label runat="server" ID="LabelTotalProductos">Total de productos:</asp:Label>
+        <asp:Label runat="server" ID="LabelTotalPedido">Total del pedido:</asp:Label>
     <hr />
     
 
     <div style="text-align:center;align-content:center;align-items:center;margin-top:40px">
-        <asp:Button runat="server" Text="PDF" id="PdfButton" OnClick="PdfButton_Click" CssClass="btn btn-dark" />
-        <asp:Button runat="server" Text="Excel" id="ExcelButton" OnClick="ExcelButton_Click" CssClass="btn btn-dark" />
+
+        <asp:ImageButton runat="server" ImageUrl="https://i.ibb.co/85SRg6P/Logo-archivo-PDF.png" ID="PdfButton1" ToolTip="Imprimir pedido en Pdf" OnClick="PdfButton1_Click" CssClass="Buttons"/>
+        <asp:ImageButton runat="server" ImageUrl="https://i.ibb.co/6ycB13Z/Excel-microsoft.png" ID="ExcelButton1" ToolTip="Imprimir pedido en Excel" OnClick="ExcelButton1_Click" CssClass="Buttons"/>
+
         <hr />
     <asp:Button runat="server" Text="Necesito ayuda para hacer el pedido" CssClass="btn btn-danger" /> </div>
 
     <hr />
     
+    <asp:Panel runat="server" ></asp:Panel>
     <asp:Button runat="server" ID="EmailButton" Text="Enviarnos email con tu pedido" OnClick="EmailButton_Click" CssClass="btn btn-dark" />
-    <asp:TextBox runat="server" ID="TextMail" TextMode="Email" placeholder="Tu dirección de email"> </asp:TextBox>
+   
+    <hr />
   <script type="text/javascript">
 
       function asignarPrecio(control, precio, seleccionado) {
@@ -74,6 +81,14 @@
 
   </script>
 
+
+    <script type="text/javascript">
+
+        function openModal() {
+            $('#myModal').modal('show');
+        }
+
+    </script>
 </asp:Content>
 
 <%--<%for (int i = 0; i < 10; i++)

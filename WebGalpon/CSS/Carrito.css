@@ -64,6 +64,11 @@ body {
     object-fit:contain;
     
 }
+.Buttons {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
 
 .ImgCarro:hover {
     transform:scale(2);

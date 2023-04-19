@@ -65,7 +65,23 @@
     visibility:hidden;
 }
 
+.content-title {
+    background-color: #343A40;
+    color: var(--crema1);
+}
 
+.content-title, .contact-subtitle {
+    color: var(--crema1);
+    padding: 40px 0px;
+}
+
+.content-form {
+    background-color: WHITE;
+    margin: auto;
+    padding: 4vh;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
 
 
 .contenedor .trabajos {

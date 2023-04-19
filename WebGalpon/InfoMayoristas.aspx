@@ -1,33 +1,39 @@
 ﻿<%@ Page Title="Productos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InfoMayoristas.aspx.cs" Inherits="WebGalpon.InfoMayoristas" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
-    <link href="CSS/FAQ.css" rel="Stylesheet" type="text/css" />
-    <div style="text-align:center;align-items:center;width:60vw;">
-
-        <div style="margin:50px 0 30px 0;text-align:center;background-color:white;width:60vw;padding:10px;border: 2px solid grey;">
-     <div>
-      <h1> ¿Cómo funciona la compra mayorista? </h1> 
-         <hr />
-       <h2> En esta página está toda la info que necesitas saber</h2>
-      </div>
-      
+    <link href="CSS/faq.css" rel="Stylesheet" type="text/css" />
+    <div style="text-align:center;align-items:center;width:60vw;" class="container">
         <hr />
+        <div class="contact-title">
+      <h1> ¿Cómo funciona la compra mayorista? </h1> 
+         </div>
+            <hr />
+        <div class="contact-form">
+            <h2> En esta página está toda la info que necesitas saber</h2>
+        </div>
+
+       
+     
+      <hr />
+        <div class="contact-form">
 
     <div class="searchbar" style="text-align:center;align-content:center;align-items:center">
         <asp:TextBox ID="BarraBusqueda" placeholder="Ingrese la busqueda" Width="400px" runat="server"></asp:TextBox>
         <asp:Button ID="BotonBusqueda" OnClick="BotonBusqueda_Click" runat="server"  Text="Buscar" AutoPostBack="true"/>
         <asp:Button ID="Refrescar" OnClick="Refrescar_Click" runat="server"  Text="Refrescar" AutoPostBack="true"/>
     </div>
-           <hr />
-           </div>
-        <div style="text-align:center;">
 
+            
+        </div>
+       <hr />
+           
+        <div class="contact-form" style="text-align:center;">
+
+            
             <asp:Label runat="server" ID="LabelBusqueda" Font-Size="XX-Large"  Visible="false"></asp:Label>
-
     
            <div class="accordion-body">
-  <div class="accordion">
-      <hr>
+  <div class="accordion">   
       <% foreach (domain.InfoMayorista item in listaMayo)
         {%>
 
@@ -48,6 +54,8 @@
 
      
             </div>
+
+
      <script src="index.js" type="text/javascript"></script>
         <script>
             const accordion = document.getElementsByClassName('container');

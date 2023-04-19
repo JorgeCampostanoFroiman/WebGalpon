@@ -24,8 +24,13 @@ body {
     text-align: center;
 }
 
+.contact-title {
+    background-color: #343A40;
+    color: var(--crema1);
+}
+
 .contact-title, .contact-subtitle {
-    color: var(--violeta1);
+    color: var(--crema1);
     padding: 40px 0px;
 }
 
@@ -66,8 +71,13 @@ body {
     object-fit: contain;
 }
 
-.ImgCarro:hover{
-    transform:scale(5);
+.Buttons {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
+
+.ImgCarro:hover {
 }
 
 

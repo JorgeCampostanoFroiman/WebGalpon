@@ -20,12 +20,14 @@ using iTextSharp.text;
 using System.Net;
 using System.Net.Mail;
 using System.Xml.Linq;
-using Font = iTextSharp.text.Font;
 using Control = System.Web.UI.Control;
-using iTextSharp.text.html.simpleparser;
 using System.Text;
 using System.Web.UI.HtmlControls;
 using Image = System.Web.UI.WebControls.Image;
+using Font = iTextSharp.text.Font;
+using iTextSharp.tool.xml.html;
+using SixLabors.ImageSharp;
+using iTextSharp.text.html;
 
 namespace WebGalpon
 {
@@ -37,6 +39,9 @@ namespace WebGalpon
         bool bandera = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+
             if (!IsPostBack && bandera == false)
             {
                 InsertRecords();
@@ -156,7 +161,7 @@ namespace WebGalpon
         public void InsertRecords()
         {
             DataTable dt = CreateDatatable();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 dt.Rows.Add((i + 1).ToString(), "0", " ", "0", " ", " ", "");
                 dt.AcceptChanges();
@@ -206,8 +211,8 @@ namespace WebGalpon
 
                 if (negocio.ExisteProducto(codigo) == true)
                 {
-                   Producto prod =  negocio.BuscarProducto(codigo);
-                   imagen = prod.ImagenUrl;
+                    Producto prod = negocio.BuscarProducto(codigo);
+                    imagen = prod.ImagenUrl;
                 }
 
 
@@ -230,67 +235,130 @@ namespace WebGalpon
             }
         }
 
-        protected void PdfButton_Click(object sender, EventArgs e)
+
+            protected void EmailButton_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+            
+        }
+
+
+        protected void PdfButton1_Click(object sender, ImageClickEventArgs e)
         {
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
-            
+
 
             DataTable dt = CargarDataTable();
 
             document.Open();
+
+            document.SetMargins(100, 100, 100, 100);
+
+            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance("https://i.postimg.cc/qqyk5S7f/logo-Galpon.png");
+            logo.ScaleToFit(500f, 30f);
+
+            document.Add(logo);
+
             Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
             Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
 
+            Paragraph titulo = new Paragraph();
+            titulo.Font = new Font(FontFactory.GetFont("Georgia", 18, Font.BOLD));
+            titulo.Alignment = Element.ALIGN_CENTER;
+            titulo.Add(" Pedido de: ");
+
+
+            PdfPCell cell2 = new PdfPCell();
+
 
             PdfPTable table = new PdfPTable(dt.Columns.Count);
-            document.Add(new Paragraph(20, "Pedido!", fontTitle));
-            document.Add(new Chunk("\n"));
 
+            document.Add(titulo);
+            document.Add(new Chunk("\n"));
 
 
             float[] widths = new float[dt.Columns.Count];
-                for (int i = 0; i < dt.Columns.Count; i++)
-                    widths[i] = 4f;
+            for (int i = 0; i < dt.Columns.Count; i++)
+                widths[i] = 4f;
 
-                table.SetWidths(widths);
-                table.WidthPercentage = 90;
+            table.SetWidths(widths);
+            table.WidthPercentage = 90;
 
-                PdfPCell cell = new PdfPCell(new Phrase("columns"));
-                cell.Colspan = dt.Columns.Count;
 
-                foreach (DataColumn c in dt.Columns)
+            PdfPCell cell = new PdfPCell(new Phrase("columns"));
+            cell.Colspan = dt.Columns.Count;
+
+            foreach (DataColumn c in dt.Columns)
+            {
+                PdfPCell celdatitulo = new PdfPCell();
+                celdatitulo.VerticalAlignment = Element.ALIGN_MIDDLE;
+                celdatitulo.HorizontalAlignment = Element.ALIGN_CENTER;
+                Phrase phrase = new Phrase(c.ColumnName, font9);
+                celdatitulo.BackgroundColor = new BaseColor(91, 203, 223);
+                celdatitulo.Phrase = phrase;
+
+                table.AddCell(celdatitulo);
+            }
+
+            foreach (DataRow r in dt.Rows)
+            {
+                if (dt.Rows.Count > 0)
                 {
-                    table.AddCell(new Phrase(c.ColumnName, font9));
-                }
 
-                foreach (DataRow r in dt.Rows)
-                {
-                    if (dt.Rows.Count > 0)
+                    for (int h = 0; h < dt.Columns.Count; h++)
                     {
-                        for (int h = 0; h < dt.Columns.Count; h++)
+                        if (Convert.ToString(r[1]) == "0")
                         {
-                        if (r[5].ToString() != "0" && r[5].ToString() != " ")
-                        {
-                            table.AddCell(new Phrase(r[h].ToString(), font9));
                         }
                         else
                         {
-                            
+                            PdfPCell celda = new PdfPCell();
+                            celda.BackgroundColor = new BaseColor(180, 214, 220);
 
+                            if (h == 6)
+                            {
+                                iTextSharp.text.Image producto = iTextSharp.text.Image.GetInstance(r[h].ToString());
+                                producto.ScaleToFit(500f, 30f);
+                                celda.Image = producto;
+                                table.AddCell(celda);
+                            }
+                            else
+                            {
+                                celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+                                celda.HorizontalAlignment = Element.ALIGN_CENTER;
+                                Phrase phrase = new Phrase(r[h].ToString(), font9);
+                                celda.Phrase = phrase;
+                                table.AddCell(celda);
+                            }
                         }
-                        }
+
                     }
                 }
-                    
-                document.Add(table);
-            document.Add(new Paragraph(20, LabelTotalProductos.Text, fontTitle));
+            }
+            document.Add(table);
+
+            document.Add(new Chunk("\n"));
             document.Add(new Chunk("\n"));
 
-            document.Add(new Paragraph(20, LabelTotalPedido.Text, fontTitle));
+            Paragraph totalProductos = new Paragraph();
+            totalProductos.Font = new Font(FontFactory.GetFont("Helvetica", 13, Font.BOLD));
+            totalProductos.Alignment = Element.ALIGN_CENTER;
+            totalProductos.Add(LabelTotalProductos.Text);
+            document.Add(totalProductos);
+
+
             document.Add(new Chunk("\n"));
 
-           
+            Paragraph totalPedido = new Paragraph();
+            totalPedido.Font = new Font(FontFactory.GetFont("Arial", 13, Font.BOLD));
+            totalPedido.Alignment = Element.ALIGN_CENTER;
+            totalPedido.Add(LabelTotalPedido.Text);
+            document.Add(totalPedido);
+
+            document.Add(new Chunk("\n"));
+
+
             document.Close();
 
 
@@ -299,89 +367,11 @@ namespace WebGalpon
             HttpContext.Current.Response.Write(document);
             Response.Flush();
             Response.End();
-
         }
 
-
-        protected void EmailButton_Click(object sender, EventArgs e)
-        {
-            if (TextMail.Text != null)
-            {
-                MailMessage ms = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-
-                ms.From = new MailAddress("j.campostano@gmail.com");
-                ms.To.Add(new MailAddress(TextMail.Text));
-
-                ms.Subject = "Hola";
-
-                smtp.Host = "smtp.gmail.com"; // para hotmail es "smtp.live.com";
-                smtp.Port = 587; //gmail, para hotmail es 25 o 465
-
-                smtp.Credentials = new NetworkCredential("j.campostano@gmail.com", "bmjpgfxoxytqigkw");
-                smtp.EnableSsl = true;
-
-                try
-                {
-                    smtp.Send(ms);
-                    Console.WriteLine("El correo se envío correctamente");
-                }
-                catch (Exception)
-                {
-                }
-            }
-            
-        }
-
-
-        public override void VerifyRenderingInServerForm (Control control)
+        protected void ExcelButton1_Click(object sender, ImageClickEventArgs e)
         {
 
         }
-
-        protected void ExcelButton_Click(object sender, EventArgs e)
-        {
-            StringBuilder sb = new StringBuilder();
-            StringWriter sw = new StringWriter(sb);
-            HtmlTextWriter htw = new HtmlTextWriter(sw);
-            Page page = new Page();
-            HtmlForm form = new HtmlForm();
-
-            GridView1.EnableViewState = false;
-            page.EnableEventValidation = false;
-            page.DesignerInitialize();
-            page.Controls.Add(form);
-            form.Controls.Add(GridView1);
-            page.RenderControl(htw);
-
-            Page.Response.Clear();
-            Page.Response.Buffer = true;
-            Page.Response.ContentType = "application/vnd.ms-excel";
-
-            Page.Response.AddHeader("Content-Disposition", "attachment; filename= PedidoExcel.xls");
-            Page.Response.Charset = "UTF-8";
-            Page.Response.ContentEncoding = Encoding.Default;
-            Page.Response.Write(sb.ToString());
-            Page.Response.End();
-        }   
-
-        protected void WordButon_Click(object sender, EventArgs e)
-        {
-            Response.Clear();
-            Response.Buffer = true;
-            Response.Charset = "";
-            Response.AddHeader("content-disposition", "attachment;filename=PedidoWord.doc");
-            Response.ContentType = "apllication/ms-word";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter hw = new HtmlTextWriter(sw);
-            GridView1.AllowPaging = false;
-            GridView1.DataBind();
-            GridView1.RenderControl(hw);
-            Response.Output.Write(sw.ToString());
-            Response.Flush();
-            Response.End();
-        }
-
-       
     }
 }

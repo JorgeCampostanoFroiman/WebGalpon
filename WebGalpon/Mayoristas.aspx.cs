@@ -16,19 +16,13 @@ namespace WebGalpon
         public List<Producto> listaMayoristas;
         public List<Producto> ProductoBuscar;
         public List<Producto> Busqueda;
-        public List<Tipo> listaTipos;
         public List<Categoria> listaCategorias;
+        public List<Tipo> listaTipos;
 
         public List<ItemCarrito> items;
         ItemCarrito iten;
         protected void Page_Load(object sender, EventArgs e)
         {
-            TipoNegocio tiponegocio = new TipoNegocio();
-            CategoriaNegocio categorianegocio = new CategoriaNegocio();
-
-            listaTipos = tiponegocio.Listar();
-            listaCategorias = categorianegocio.Listar();
-
             items = (List<ItemCarrito>)Session["itemsList"];
             if (items == null)
                 items = new List<ItemCarrito>();
@@ -36,11 +30,18 @@ namespace WebGalpon
             iten = new ItemCarrito();
 
             ProductoNegocio negocio = new ProductoNegocio();
-
+            CategoriaNegocio catneg = new CategoriaNegocio();
+            TipoNegocio tipneg = new TipoNegocio();
             try
             {
                 listaMayoristas = negocio.Listar();
                 Session.Add("ListaProducto", listaMayoristas);
+
+                listaCategorias = catneg.Listar();
+                Session.Add("ListaCategorias", listaCategorias);
+
+                listaTipos = tipneg.Listar();
+                Session.Add("ListaTipos", listaTipos);
 
             }
             catch (Exception ex)
@@ -142,7 +143,7 @@ namespace WebGalpon
 
             listaMayoristas = Busqueda;
             Session.Add("Buscar", Busqueda);
-            
+
 
         }
 
