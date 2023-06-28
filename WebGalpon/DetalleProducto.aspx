@@ -3,12 +3,19 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
    
     <div class="container" style="text-align:center;align-content:center;align-items:center;">
-    <link href="CSS/detalleproducto.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/DetalleProducto.css" rel="Stylesheet" type="text/css" />
         <hr />
-    <h2 class="details-title">Detalle del producto</h2>
+        <div class="content-title">
+            
+    <h2>Detalle del producto</h2>
+
+
+        </div>
     <hr />
-    <div class="card2" style="height:70vh" >
-    <div class="breadcrumb">
+
+        <div class="content-form">
+ <div >
+    <div class="breadcrumb" style="background-color:white">
         <a class="link" href="Home.aspx">Inicio</a> 
         <a class="link" href="Productos.aspx">Productos</a>
         <asp:HyperLink CssClass="link" runat="server" ID="HL2"></asp:HyperLink>
@@ -17,7 +24,7 @@
   <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
 </svg></a></div>
 
-  <div class="card2" style=" align-items:center; line-height:3vw; padding:10px; display:flex;  margin-right:15px; margin:15px 0; text-align:center; border: 2px solid;  background-color: var(--crema1); border-color:var(--violeta1);border-radius:10px ">
+  <div class="card2" style=" align-items:center; line-height:3vw; padding:10px; display:flex; margin-right:15px; margin:15px 0; text-align:center; border: 2px solid;  border-color:var(--violeta1);border-radius:10px ">
    
       <div class="imgcard" >
           <asp:Image runat="server" ID="imagenProducto"  CssClass="main-img" />
@@ -37,19 +44,26 @@
            </div>
       </div>
   </div>
+
+
+        </div>
+
+
+   
             
 
 
 
 
     <hr />
-    <h2 class="details-title">Otras medidas </h2>
+    <h2 class="content-title">Otras medidas </h2>
     <hr />
 
-    <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) ); " >
+        <div class="content-form">
+            <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) ); " >
     <% foreach (domain.Producto item in listaMedidas)
         {%>
-  <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center;border: 2px solid;  background-color: var(--crema1); border-color:var(--violeta1) ">
+  <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center; ">
     <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 100px; width:100px; margin-top:5px;" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <% =item.NombreProducto %></h5>
@@ -64,18 +78,20 @@
   </div>
       <% } %>
  </div>
+        </div>
+    
 
 
     
     <hr />
 
-     <h2 class="details-title">Recomendados</h2>
+     <h2 class="content-title">Recomendados</h2>
     <hr />
-
-        <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) ); " >
+        <div class="content-form">
+            <div class="cardflex" style="display:grid; grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) ); " >
     <% foreach (domain.Producto item in listaRecomendados)
         {%>
-  <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center;border: 2px solid;  background-color: var(--crema1); border-color:var(--violeta1) ">
+  <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center; ">
     <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 100px; width:100px; margin-top:5px;" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <% =item.NombreProducto %></h5>
@@ -92,5 +108,9 @@
  </div>
     </div>
 
+        <hr />
+        </div>
+        
+    
 
 </asp:Content>

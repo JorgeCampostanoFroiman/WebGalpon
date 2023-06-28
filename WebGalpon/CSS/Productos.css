@@ -22,26 +22,29 @@ body {
     background-color: #343A40;
     color: var(--crema1);
     text-align: center;
-    padding: 40px 0px;
+    padding: 1vh;
+    border-radius:5px;
 }
 
 .contact-form {
     background-color: WHITE;
     margin: auto;
-    padding: 4vh;
+    padding: 1vh;
     border-radius: 5px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
 }
 
 
 .card {
-    border: inset 1em 1em var(--violeta1);
-    border-radius: 30px;
+    border: 1px solid grey;
+    border-radius: 12PX;
+    margin: 1vh;
 }
     .card:hover {
-        box-shadow: var(--celeste1) 0px 0px 0px 3px, var(--crema1) 0px 0px 0px 6px, var(--celeste2) 0px 0px 0px 9px, var(--violeta1) 0px 0px 0px 12px, var(--crema1) 0px 0px 0px 15px;
-        transform: scale(1.1);
-        z-index: 10000;
+        box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        z-index: 1000;
     }
         .card-img-top:hover {
         transform: scale(2);
@@ -50,4 +53,45 @@ body {
     
         }
 
-/*box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;*/
+.btn btn-dark btn-sm {
+    margin: 1vh;
+}
+
+.card-img-top {
+    height: 100px;
+    width:100px;
+    margin-top:1vw;
+}
+
+.cardflex {
+    grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) )
+}
+
+.card-body{
+    padding:0.5vh;
+}
+
+@media screen and (max-width: 600px) {
+
+    .cardflex {
+        grid-template-columns: repeat( auto-fill, minmax(21vh, 2fr) )
+    }
+
+    .card {
+        
+    }
+
+    .card-title {
+        font-size: small;
+    }
+    .card-text {
+        font-size: small;
+    }
+    .btn btn-dark btn-sm{
+        font-size: small;
+        margin:1vh;
+    }
+
+
+}
+    /*box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;*/

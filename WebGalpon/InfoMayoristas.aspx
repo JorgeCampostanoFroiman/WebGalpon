@@ -1,27 +1,24 @@
 ﻿<%@ Page Title="Productos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InfoMayoristas.aspx.cs" Inherits="WebGalpon.InfoMayoristas" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
-    <link href="CSS/faq.css" rel="Stylesheet" type="text/css" />
-    <div style="text-align:center;align-items:center;width:60vw;" class="container">
+    <link href="CSS/infoMayorista.css" rel="Stylesheet" type="text/css" />
         <hr />
         <div class="contact-title">
-      <h1> ¿Cómo funciona la compra mayorista? </h1> 
+      <h1 class="title"> ¿Cómo funciona la compra mayorista? </h1> 
          </div>
             <hr />
         <div class="contact-form">
-            <h2> En esta página está toda la info que necesitas saber</h2>
+            <h2 class="title"> En esta página está toda la info que necesitas saber</h2>
         </div>
 
        
      
       <hr />
-        <div class="contact-form">
+        <div class="contact-form" style="text-align:center;">
 
-    <div class="searchbar" style="text-align:center;align-content:center;align-items:center">
-        <asp:TextBox ID="BarraBusqueda" placeholder="Ingrese la busqueda" Width="400px" runat="server"></asp:TextBox>
-        <asp:Button ID="BotonBusqueda" OnClick="BotonBusqueda_Click" runat="server"  Text="Buscar" AutoPostBack="true"/>
-        <asp:Button ID="Refrescar" OnClick="Refrescar_Click" runat="server"  Text="Refrescar" AutoPostBack="true"/>
-    </div>
+        <asp:TextBox ID="BarraBusqueda" placeholder="Ingrese la busqueda" runat="server"></asp:TextBox>
+        <asp:Button ID="BotonBusqueda" OnClick="BotonBusqueda_Click" runat="server" class="btn btn-dark btn-sm" Text="Buscar" AutoPostBack="true"/>
+        <asp:Button ID="Refrescar" OnClick="Refrescar_Click" runat="server" CLASS="btn btn-dark btn-sm" Text="Refrescar" AutoPostBack="true"/>
 
             
         </div>
@@ -30,7 +27,7 @@
         <div class="contact-form" style="text-align:center;">
 
             
-            <asp:Label runat="server" ID="LabelBusqueda" Font-Size="XX-Large"  Visible="false"></asp:Label>
+            <asp:Label runat="server" ID="LabelBusqueda"  Visible="false"></asp:Label>
     
            <div class="accordion-body">
   <div class="accordion">   
@@ -52,8 +49,6 @@
  
 
 
-     
-            </div>
 
 
      <script src="index.js" type="text/javascript"></script>
@@ -67,8 +62,8 @@
             }
         </script>
     <div class="banner-info" style="margin:30px;">
-           <h1 style="color:slategrey">Si te queda alguna duda acerca de la compra mayorista...</h1>
-           <h2 style="color:slategrey">...podes contactarnos con nosotros... <a class="whatsanchor" href="https://wa.me/1133467922">Acá</a></h2>
+           <h1 class="title" style="color:slategrey;">Si te queda alguna duda acerca de la compra mayorista...</h1>
+           <h2 class="title" style="color:slategrey">...podes contactarnos con nosotros... <a class="whatsanchor" href="https://wa.me/1133467922">Acá</a></h2>
        </div>
 
 

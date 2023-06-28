@@ -1,4 +1,5 @@
-﻿:root {
+﻿
+:root {
     --celeste1: #8ce7ea;
     --celeste2: #08d3d3;
     --celeste3: #8fdfe0;
@@ -6,58 +7,60 @@
     --violeta1: #63496d;
 }
 
-body{
+body {
     background-color: var(--crema1);
 }
 
-.section-faq{
-    margin-top:30px;
+.section-faq {
+    margin-top: 30px;
     width: 90vw;
-    margin:auto;
-    text-align:center;
-    justify-items:center;
-    justify-content:center;
+    margin: auto;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
 }
-.faq-title{
+
+.faq-title {
     width: 70%;
     margin-top: 20px;
     color: var(--violeta1);
-    text-align:center;
-    margin:auto;
+    text-align: center;
+    margin: auto;
 }
 
-.img-faq{
+.img-faq {
     object-fit: cover;
     width: 70%;
     border: 1px solid black;
     border-radius: 20px;
 }
 
-@media (max-width: 991px){
-    img{
-        width:100%
+@media (max-width: 991px) {
+    img {
+        width: 100%
     }
 }
 
-.content-anchor{
-    color:black;
-    text-decoration:none;
+.content-anchor {
+    color: black;
+    text-decoration: none;
 }
 
 .contact-title {
     background-color: #343A40;
     color: var(--crema1);
-    padding: 40px 0px;
-    border-radius:5px;
+    padding: 1vh;
+    border-radius: 5px;
 }
 
 
 .contact-form {
     background-color: WHITE;
     margin: auto;
-    padding: 4vh;
+    padding: 1vh;
     border-radius: 5px;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    text-align:center,
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
@@ -77,7 +80,7 @@ h1 {
 
 /* Sets the width for the accordion. Sets the margin to 90px on the top and bottom and auto to the left and right */
 
-.accordion {   
+.accordion {
     color: black;
     background-color: white;
     padding: 1vh 1vh;
@@ -94,9 +97,9 @@ h1 {
     .accordion .label {
         position: relative;
         padding: 10px 0;
-        font-size: 30px;
         color: black;
         cursor: pointer;
+        text-align: initial;
     }
 
         /* Positions the plus sign 5px from the right. Centers it using the transform property. */
@@ -121,6 +124,8 @@ h1 {
         text-align: justify;
         overflow: hidden;
         transition: 0.5s;
+        display: flex;
+        align-items: center;
     }
 
     /* Adds a horizontal line between the contents */
@@ -133,8 +138,8 @@ h1 {
     /* Unhides the content part when active. Sets the height */
 
     .accordion .container.active .content {
-        height: 12vh;
-        text-decoration:none;
+        height: 25vh;
+        text-decoration: none;
     }
 
     /* Changes from plus sign to negative sign once active */
@@ -191,3 +196,28 @@ h1 {
             -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
         }
+
+
+@media (max-width: 600px) {
+    .title {
+        font-size: x-large;
+    }
+
+    .contact-form {
+        padding: 2vh;
+        background-color: WHITE;
+        margin: auto;
+        padding: 1vh;
+        border-radius: 5px;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    }
+
+    .acordion .label {
+        font-size: large;
+    }
+
+    .accordion .content {
+        font-size: medium;
+    }
+    
+}

@@ -45,19 +45,16 @@
     align-items: center;
     display: flex;
     border: 2px solid var(--violeta1);
-    background-color: var(--crema1);
+}
+
+.link:hover{
+    transition: 0,5s;   
+    transform: scale(200%);
 }
 
 .cardflex2{
     display:flex;
    flex-direction:row;
-}
-
-.card-body2
-
-.details-title {
-    margin-top: 2vw;
-    text-align: center;
 }
 
 .principal-image {
@@ -135,22 +132,41 @@
 }
 
 
-.card {
-    border: inset 1em 1em var(--violeta1);
-    border-radius: 30px;
-}
-
-
-.card-img-top:hover {
-    transform:rotate(-45deg);
-    transform: scale(2);
-    z-index: 11000;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
-
 .principal-image:hover {
     transform: rotate(-45deg);
     transform: scale(1.2);
     z-index: 11000;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.content-title {
+    background-color: #343A40;
+    color: var(--crema1);
+    border-radius: 5px;
+}
+
+.content-title, .contact-subtitle {
+    color: var(--crema1);
+    padding: 40px 0px;
+}
+
+.content-form {
+    background-color: WHITE;
+    margin: auto;
+    padding: 4vh;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
+
+.cardflex .card:hover{
+    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    z-index: 1000;
+}
+.card{
+    background-color:white;
+}
+.card-img-top:Hover {
+    transform: scale(200%);
+    transition: 0.8s;
 }

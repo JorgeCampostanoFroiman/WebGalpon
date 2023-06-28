@@ -16,12 +16,12 @@
 #productos ul {
     display: grid;
     list-style: none;
-    grid-template-columns: repeat(auto-fill, [col-start] 222px[col-end]);
+    grid-template-columns: repeat(auto-fill, [col-start] 180px[col-end]);
     text-align: center;
-    margin: auto;
     row-gap: 20px;
     column-gap: 60px;
-    margin-top: 40px;
+    padding:0px;
+    justify-content:center;
 }
 #productos li{
     border: 2px solid black;
@@ -56,7 +56,7 @@
 }
 
 #productos li:hover img {
-    transform:scale(1.5);
+    transform:scale(1.8);
 }
 
 
@@ -66,8 +66,11 @@
 }
 
 .content-title {
+    margin: 50px 0 30px 0;
+    text-align:center;
     background-color: #343A40;
     color: var(--crema1);
+    border-radius: 5px;
 }
 
 .content-title, .contact-subtitle {
@@ -116,49 +119,83 @@
 
 .trabajos-card{
     width:33vw;
-    height: 50vh;
     text-align:center;
     align-content:center;
     justify-content:center;
     margin:auto;
-    border-right:1px solid grey;
-    border-left:1px solid grey; 
+    border:1px solid grey;
+    margin-right:5px;
+    border-radius:5px;
 }
+
+
 
 .trabajos-card a{
     text-decoration:none;
 }
 
-
-
-.envios-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: auto;
+.trabajos .trabajos-card:hover {
+        box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        z-index: 1000;
 }
 
-.envios-box p{
-    width:60%;
-    margin:auto;
-    margin-top:20px;
-
+.trabajos img:hover{
+       transform:scale(1.8);
 }
+
+
 
 .envios-capital {
-    margin-right:15px;
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 1px solid grey;
+    border-radius:5px;
+    margin-bottom: 10px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
 .envios-interior {
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.envios-capital:hover {
+    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    z-index: 1000;
+}
+.envios-interior:hover {
+    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    z-index: 1000;
+
 }
 
 .envios img {
     margin: 5px;
     border: 1px solid black;
-    height:200px;
+    height: 200px;
+
+}
+
+.envios img:hover{
+    transform:scale(1.5);
+    border:none;
+}
+
+.envios-texto{
+    text-align:center;
+    width:40vh;
 }
 
 .envios p {
@@ -183,15 +220,110 @@
 }
 
 .mas-vendidos .card:hover {
-    box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
-    -webkit-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
-    -moz-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     z-index: 1000;
 }
 
 .novedades .card:hover {
-    box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
-    -webkit-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
-    -moz-box-shadow: 26px 21px 43px -15px rgba(0,0,0,0.79);
+    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     z-index: 1000;
 }
+
+.novedades .content-form {
+   height:40vh;
+}
+
+.d-block w-100{
+    height:35vh;
+}
+
+
+@media screen and (max-width: 600px) {
+    .content-title {
+        padding: 4vh;
+        margin: 0px;
+    }
+
+    .section-title {
+        font-size: medium;
+    }
+
+    .content-form {
+        padding: 2vh;
+    }
+
+    #productos ul {
+        row-gap: 1.5vh;
+        column-gap: 6vh;
+        grid-template-columns: repeat(auto-fill, [col-start] 7vh[col-end]);
+        padding: 0px;
+        justify-content: center;
+    }
+
+    #productos li {
+        margin: 0px;
+    }
+
+    #productos img {
+        height: 40px;
+        width: 40px;
+    }
+
+    #productos p {
+        font-size: xx-small;
+        margin: 0px;
+    }
+
+    #productos li a {
+        font-size: 0;
+    }
+
+
+    #trabajos {
+        flex-direction: column;
+    }
+
+    .trabajos-card {
+        width: fit-content;
+        margin-bottom: 2vh;
+    }
+
+    .n1 h3 {
+        font-size: x-large;
+    }
+
+    .n2 p {
+        font-size: small;
+    }
+
+    .n3 {
+        margin-bottom: 1vh;
+    }
+
+    .envios-interior {
+        display: block;
+    }
+
+    .envios-capital {
+        display: block;
+    }
+
+    .envios-img {
+        text-align: center;
+    }
+
+    .envios-texto {
+        width: auto;
+    }
+
+    .novedades .content-form{
+        height:auto;
+    }
+    .d-block w-100 {
+        height: auto;
+    }
+} 

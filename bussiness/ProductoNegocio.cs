@@ -112,6 +112,39 @@ namespace bussiness
             }
         }
 
+        public List<Producto> ListarRecomendados()
+        {
+            List<Producto> lista = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select Categoria.NombreCategoria, Categoria.IdCategoria, Tipo.NombreTipo, Tipo.Descripcion, Tipo.PrecioMinorista, Tipo.PrecioMayorista, Producto.Codigo, Producto.Nombre, Producto.Estado, Producto.ImagenUrl from Producto inner join Categoria on Producto.IdCategoria = Categoria.IdCategoria inner join Tipo on Producto.IdTipo = Tipo.IdTipo where Producto.Codigo in ('901R', '902R', '903R', '904R')");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Producto aux = new Producto();
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.NombreProducto = (string)datos.Lector["NombreProducto"];
+                    aux.PrecioVenta = (decimal)datos.Lector["PrecioMayorista"];
+                    aux.PrecioMinorista = (decimal)datos.Lector["PrecioMinorista"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Tipo = (string)datos.Lector["NombreTipo"];
+                    aux.Categoria = (string)datos.Lector["NombreCategoria"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public List<Producto> ListarPorTipo(string str)
         {
             List<Producto> lista = new List<Producto>();

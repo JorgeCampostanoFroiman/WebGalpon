@@ -14,6 +14,8 @@ namespace WebGalpon
         public List<Producto> ListaProductos;
         public List<Producto> ListaProductosPopulares;
         public List<Novedad> ListaNovedades;
+        public List<Novedad> ListaNovedadesAnteriores;
+        public Novedad UltimaNovedad;
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
@@ -29,6 +31,12 @@ namespace WebGalpon
 
                 ListaNovedades = novedad.ListarNovedades();
                 Session.Add("ListaNovedades", ListaNovedades);
+
+                ListaNovedadesAnteriores = novedad.ListarAnterioresNovedades();
+                Session.Add("ListaNovedadesAnteriores", ListaNovedadesAnteriores);
+
+                UltimaNovedad = novedad.ListarUltimaNovedad();
+                Session.Add("UltimaNovedad", UltimaNovedad);
 
             }
             catch (Exception ex)

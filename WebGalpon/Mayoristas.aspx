@@ -2,8 +2,8 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
-     <div class="container" style="text-align:center;align-items:center;width:60vw;">
-    <link href="CSS/faq.css" rel="Stylesheet" type="text/css" />
+     <div class="container" style="text-align:center;align-items:center">
+    <link href="CSS/Mayorista.css" rel="Stylesheet" type="text/css" />
 
          <hr />
        <div class="contact-title">
@@ -13,11 +13,13 @@
        </div>
         <hr />
          <div class="contact-subtitle">
-              <div class="searchbar" style="text-align:center;align-content:center;align-items:center">
-        <asp:TextBox ID="BarraBusqueda" placeholder="Ingrese la busqueda" Width="400px" runat="server"></asp:TextBox>
-        <asp:Button ID="BotonBusqueda" OnClick="BotonBusqueda_Click" runat="server"  Text="Buscar" AutoPostBack="true"/>
-        <asp:Button ID="Refrescar" OnClick="Refrescar_Click" runat="server"  Text="Refrescar" AutoPostBack="true"/>
-    </div>
+             <div class="contact-form">
+
+        <asp:TextBox ID="BarraBusqueda" placeholder="Ingrese la busqueda" runat="server"></asp:TextBox>
+        <asp:Button ID="BotonBusqueda" OnClick="BotonBusqueda_Click" runat="server" CLASS="btn btn-dark btn-sm" Text="Buscar" AutoPostBack="true"/>
+        <asp:Button ID="Refrescar" OnClick="Refrescar_Click" runat="server" CLASS="btn btn-dark btn-sm" Text="Refrescar" AutoPostBack="true"/>
+             </div>
+              
          </div>
         <hr />
 
@@ -207,7 +209,7 @@
 
 
    
-
+    <hr />
 
 
 

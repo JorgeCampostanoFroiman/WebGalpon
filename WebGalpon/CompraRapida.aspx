@@ -10,7 +10,7 @@
 
 
     <hr />
-    <div class="contact-subtitle"><h3>Debes conocer los códigos del catálogo para usar esta sección</h3></div>
+    <h3>Debes conocer los códigos del catálogo para usar esta sección</h3>
     <hr />
     <div style="text-align:center;" id="tabla">
     <table class="table table-striped mt-5" style="background-color:#b6d1d4;text-align:center;" id="table">
@@ -63,10 +63,6 @@
 
     <hr />
     
-    <asp:Panel runat="server" ></asp:Panel>
-    <asp:Button runat="server" ID="EmailButton" Text="Enviarnos email con tu pedido" OnClick="EmailButton_Click" CssClass="btn btn-dark" />
-   
-    <hr />
   <script type="text/javascript">
 
       function asignarPrecio(control, precio, seleccionado) {

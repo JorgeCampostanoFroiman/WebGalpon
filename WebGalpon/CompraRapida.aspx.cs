@@ -28,6 +28,7 @@ using Font = iTextSharp.text.Font;
 using iTextSharp.tool.xml.html;
 using SixLabors.ImageSharp;
 using iTextSharp.text.html;
+using System.Data.SqlClient;
 
 namespace WebGalpon
 {
@@ -236,12 +237,6 @@ namespace WebGalpon
         }
 
 
-            protected void EmailButton_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
-            
-        }
-
 
         protected void PdfButton1_Click(object sender, ImageClickEventArgs e)
         {
@@ -329,7 +324,7 @@ namespace WebGalpon
                                 celda.HorizontalAlignment = Element.ALIGN_CENTER;
                                 Phrase phrase = new Phrase(r[h].ToString(), font9);
                                 celda.Phrase = phrase;
-                                table.AddCell(celda);
+                                table.AddCell(celda);   
                             }
                         }
 
@@ -371,7 +366,36 @@ namespace WebGalpon
 
         protected void ExcelButton1_Click(object sender, ImageClickEventArgs e)
         {
+            DataTable dt = CargarDataTable();
 
+            //Create a dummy GridView
+            GridView GridView1 = new GridView();
+            GridView1.AllowPaging = false;
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition",
+             "attachment;filename=MiPedido.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                //Apply text style to each Row
+                GridView1.Rows[i].Attributes.Add("class", "textmode");
+            }
+            GridView1.RenderControl(hw);
+
+            //style to format numbers to string
+            string style = @"<style> .textmode { mso-number-format:\@; } </style>";
+            Response.Write(style);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
         }
     }
 }

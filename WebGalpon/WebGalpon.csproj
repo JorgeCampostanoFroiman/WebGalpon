@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AgregarProd.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="CompraRapida.aspx" />
     <Content Include="Contact.aspx" />
@@ -196,9 +197,11 @@
     <Content Include="CSS\detalleproducto.css" />
     <Content Include="CSS\FAQ.css" />
     <Content Include="CSS\Home.css" />
+    <Content Include="CSS\InfoMayorista.css" />
     <Content Include="CSS\infomayoristas.css" />
     <Content Include="CSS\login.css" />
     <Content Include="CSS\master.css" />
+    <Content Include="CSS\Mayorista.css" />
     <Content Include="CSS\Mayoristas.css" />
     <Content Include="CSS\Ofertas.css" />
     <Content Include="CSS\personalizados.css" />
@@ -270,6 +273,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarProd.aspx.cs">
+      <DependentUpon>AgregarProd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarProd.aspx.designer.cs">
+      <DependentUpon>AgregarProd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

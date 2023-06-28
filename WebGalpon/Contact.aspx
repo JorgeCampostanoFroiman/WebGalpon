@@ -3,7 +3,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <link href="CSS/contact.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/Contact.css" rel="Stylesheet" type="text/css" />
 
     
         <hr />
@@ -11,33 +11,49 @@
         <hr />
 
     <div class="contact-form">
+        <div class="message-form">
             <div class="contact-subtitle">
-                <h3 style="width:80%;margin:auto;color:#343A40">¡Dejanos tu mensaje!</h3>
+                <h3 style="width:80%;margin:auto;color:#343A40" class="msg">¡Dejanos tu mensaje!</h3>
             </div>
    
-    
             <div class="contact-name">
                 <asp:TextBox runat="server" ID="NameBox" type="text" CssClass="form-control" placeholder="Nombre" required=""></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" controltovalidate="NameBox" errormessage="Campo requerido"></asp:RequiredFieldValidator>
             </div>
-
+            
             <div class="contact-email">
                 <asp:TextBox runat="server" ID="EmailBox" type="email" CssClass="form-control" placeholder="Email" required=""></asp:TextBox>
+                
             </div>
+        <asp:RequiredFieldValidator runat="server" controltovalidate="EmailBox" errormessage="Campo requerido" regularexpresion=""  ></asp:RequiredFieldValidator>
 
             <div class="contact-subject" style="text-align:center; margin:auto">
-                 <asp:TextBox runat="server" ID="SubjectBox" type="text" CssClass="form-control" placeholder="Asunto" required=""></asp:TextBox>       
+                 <asp:TextBox runat="server" ID="SubjectBox" type="text" CssClass="form-control" placeholder="Asunto" required=""></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" controltovalidate="SubjectBox" errormessage="Campo requerido"></asp:RequiredFieldValidator>
             </div>
 
             <div class="contact-text" style="margin-bottom:20px;">
                 <asp:TextBox runat="server" ID="MessageBox" type="text" CssClass="text-area" rows="3" placeholder="Mensaje" required=""></asp:TextBox>
-            </div>  
-            
-            <div class="contact-submit" style="margin-top:20px";>
-                <asp:Button type="submit" CssClass="form-button" runat="server" ID="SendButton" Text="Enviar" OnClick="SendButton_Click" />
+                
             </div>  
 
+           <asp:RequiredFieldValidator runat="server" controltovalidate="MessageBox" errormessage="Campo requerido"></asp:RequiredFieldValidator>
+        <div class="contact-submit";>
+                <asp:Button type="submit" CssClass="btn btn-dark" runat="server" ID="SendButton" Text="Enviar" OnClick="SendButton_Click" />
+            </div>  
+        
+         <div><asp:RegularExpressionValidator runat="server" ID="RegularExpresionMail" ControlToValidate="EmailBox" ValidationExpression="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" ErrorMessage="*Direccion de email no valida"></asp:RegularExpressionValidator></div>
+        
+        </div>
+            
+
       </div> 
+
     <hr />
+
+    
+
+
     <div class="contact-form">
          <div class="info-contacto">
         <div class="info"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">

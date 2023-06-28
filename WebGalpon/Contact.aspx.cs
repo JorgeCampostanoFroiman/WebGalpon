@@ -22,19 +22,20 @@ namespace WebGalpon
         {
             if (EmailBox.Text != null)
             {
+
                 MailMessage ms = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
 
-                ms.From = new MailAddress("j.campostano@gmail.com");
+                ms.From = new MailAddress("galponspam@gmail.com");
                 ms.To.Add(new MailAddress("j.campostano@hotmail.com"));
-
+                
                 ms.Subject = SubjectBox.Text;
-                ms.Body = "Mail a responder: " + EmailBox.Text + " - " + MessageBox.Text;
+                ms.Body = "Mail que envía el mensaje: " + EmailBox.Text + " - " + MessageBox.Text;
 
                 smtp.Host = "smtp.gmail.com"; // para hotmail es "smtp.live.com";
                 smtp.Port = 587; //gmail, para hotmail es 25 o 465
 
-                smtp.Credentials = new NetworkCredential("j.campostano@gmail.com", "bmjpgfxoxytqigkw");
+                smtp.Credentials = new NetworkCredential("galponcitospam@gmail.com", "iijeranolrwmmtnk");
                 smtp.EnableSsl = true;
 
                 try

@@ -38,6 +38,62 @@ namespace bussiness
             }
         }
 
+        public Novedad ListarUltimaNovedad()
+        {
+            Novedad aux = new Novedad();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select top 1 Titulo, Descripcion, ImagenUrl from Novedades order by IdNovedad desc");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Titulo = (string)datos.Lector["Titulo"];
+                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                }
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Novedad> ListarAnterioresNovedades()
+        {
+            List<Novedad> lista = new List<Novedad>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select Titulo, Descripcion, ImagenUrl from Novedades where IdNovedad != (Select max(IdNovedad) from Novedades )");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Novedad aux = new Novedad();
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Titulo = (string)datos.Lector["Titulo"];
+                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
         public void Agregar(string titulo, string desc, string img)
         {
             AccesoDatos datos = new AccesoDatos();

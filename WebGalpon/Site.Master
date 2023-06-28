@@ -153,9 +153,17 @@
       </li>
         <li class="nav-item" style="padding-right:5vh;font-size:large">
         <a class="nav-link" href="Preguntas.aspx">Ayuda</a>
-      </li>
-        <li class="nav-item" style="padding-right:5vh;font-size:large">
-        <a class="nav-link" href="Modificar.aspx">Modificar</a>
+ <li class="nav-item dropdown" style="padding-right:5vh;font-size:large">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Modificaciones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:213px" >
+            <a class="dropdown-item" style="font-size:large" href="Modificar.aspx">Varios</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="font-size:large" href="AgregarProd.aspx">Productos</a>
+            <div class="dropdown-divider"></div>
+            
+        </div>
       </li>
         <li class="nav-item" style="padding-right:5vh;font-size:large">
         <a class="nav-link" href="CompraRapida.aspx">Compra Rapida</a>
