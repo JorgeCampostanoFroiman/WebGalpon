@@ -91,15 +91,16 @@
 }
 
 .main-img {
-    max-width: 60%;
+    max-width: 100%;
     transition: 0.5s;
     object-fit: cover;
 }
 
-.main-img:hover {
-    transform: scale(1.5);
-    z-index: 11000;
-}
+    .main-img:hover {
+        transform: scale(1.02);
+        z-index: 11000;
+        box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
+    }
 
 
 
@@ -134,7 +135,7 @@
 
 .principal-image:hover {
     transform: rotate(-45deg);
-    transform: scale(1.2);
+    transform: scale(1.0002);
     z-index: 11000;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }

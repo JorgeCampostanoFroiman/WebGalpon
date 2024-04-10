@@ -17,8 +17,9 @@ namespace bussiness
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
-            // conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=GALPONDELOSCUADROS_DB; integrated security=sspi");
+            conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]); // for web
+            //conexion = new SqlConnection("data source=.\\SQLEXPRESS; initial catalog=ELGALPONDELOSCUADROS_DB; integrated security=sspi"); //Q  for local
+
             comando = new SqlCommand();
         }
 

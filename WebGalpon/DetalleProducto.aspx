@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
    
     <div class="container" style="text-align:center;align-content:center;align-items:center;">
-    <link href="CSS/DetalleProducto.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/detalleProducto.css" rel="Stylesheet" type="text/css" />
         <hr />
         <div class="content-title">
             
@@ -39,7 +39,7 @@
                 <p class="form-button"><asp:Label runat="server" ID="labelDescripcion"></asp:Label></p>
                  <hr />
                 
-                <asp:Button CssClass="btn btn-dark btn-sm" runat="server" ID="btnCarrito" Text="Agregar" OnClick="btnCarrito_Click" />
+                <asp:Button CssClass="btn btn-dark btn-sm" runat="server" ID="btnCarrito" target="_blank" Text="Agregar" OnClick="btnCarrito_Click" />
                 <a class="btn btn-dark btn-sm" href="Productos.aspx"><asp:Label runat="server" ID="labelVolver"></asp:Label></a>
            </div>
       </div>
@@ -64,11 +64,11 @@
     <% foreach (domain.Producto item in listaMedidas)
         {%>
   <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center; ">
-    <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 100px; width:100px; margin-top:5px;" alt="Card image cap">
+    <img class="card-img-top" src="<%=item.ImagenUrl %>" style=" width:20vh; margin-top:5px;" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <% =item.NombreProducto %></h5>
       <p class="card-text"><% =item.Descripcion %></p>
-      <p style="margin-bottom:5px;" class="card-text"> $<% =item.PrecioVenta %></p>
+      <p style="font-weight:bold;font-size:x-large;margin-bottom:5px;" class="card-text"> $<% =(int)Decimal.Truncate(item.PrecioVenta) %></p>
       <a href="DetalleProducto.aspx?id=<% = item.Codigo%>" class="btn btn-dark btn-sm">Ver Detalle</a>
         <a href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
   <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
@@ -92,11 +92,11 @@
     <% foreach (domain.Producto item in listaRecomendados)
         {%>
   <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center; ">
-    <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 100px; width:100px; margin-top:5px;" alt="Card image cap">
+    <img class="card-img-top" src="<%=item.ImagenUrl %>" style=" width:20vh; margin-top:5px;" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <% =item.NombreProducto %></h5>
       <p class="card-text"><% =item.Descripcion %></p>
-      <p style="margin-bottom:5px;" class="card-text"> $<% =item.PrecioVenta %></p>
+      <p style="font-weight:bold;font-size:x-large;margin-bottom:5px;" class="card-text"> $<% =(int)Decimal.Truncate(item.PrecioVenta) %></p>
       <a href="DetalleProducto.aspx?id=<% = item.Codigo%>" class="btn btn-dark btn-sm">Ver Detalle</a>
         <a href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
   <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>

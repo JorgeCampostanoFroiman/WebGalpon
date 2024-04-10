@@ -13,7 +13,10 @@ namespace WebGalpon
 {
     public partial class Mayoristas : System.Web.UI.Page
     {
-        public List<Producto> listaMayoristas;
+        public List<Producto> listaProductos;
+
+
+
         public List<Producto> ProductoBuscar;
         public List<Producto> Busqueda;
         public List<Categoria> listaCategorias;
@@ -26,23 +29,22 @@ namespace WebGalpon
             items = (List<ItemCarrito>)Session["itemsList"];
             if (items == null)
                 items = new List<ItemCarrito>();
-
             iten = new ItemCarrito();
 
             ProductoNegocio negocio = new ProductoNegocio();
             CategoriaNegocio catneg = new CategoriaNegocio();
             TipoNegocio tipneg = new TipoNegocio();
+
             try
             {
-                listaMayoristas = negocio.Listar();
-                Session.Add("ListaProducto", listaMayoristas);
+                listaProductos = negocio.Listar();
+                Session.Add("ListaPaisajes", listaProductos);
 
                 listaCategorias = catneg.Listar();
                 Session.Add("ListaCategorias", listaCategorias);
 
                 listaTipos = tipneg.Listar();
                 Session.Add("ListaTipos", listaTipos);
-
             }
             catch (Exception ex)
             {
@@ -80,7 +82,6 @@ namespace WebGalpon
                                 items.Remove(elim);
                                 items.Add(iten);
                             }
-
                         }
                         else
                         {
@@ -131,17 +132,13 @@ namespace WebGalpon
                             if (System.Text.RegularExpressions.Regex.IsMatch(Convert.ToString(item.PrecioVenta), BarraBusqueda.Text, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
                             {
                                 Busqueda.Add(item);
-
                             }
-
                         }
-
-
                     }
                 }
             }
 
-            listaMayoristas = Busqueda;
+            listaProductos = Busqueda;
             Session.Add("Buscar", Busqueda);
 
 
@@ -150,7 +147,7 @@ namespace WebGalpon
         protected void Refrescar_Click(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
-            listaMayoristas = negocio.Listar();
+            listaProductos = negocio.Listar();
         }
 
     }

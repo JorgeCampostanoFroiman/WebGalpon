@@ -1,29 +1,32 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebGalpon.Contact" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebGalpon.Login" EnableEventValidation="false" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <link href="CSS/login.css" rel="stylesheet" type="text/css" />
 
-       <body class="main-bg">
+     <body class="main-bg">
         <div class="login-container text-c animated flipInX">
                                   
-                    <p class="text" color="red" >Ingreso de usuarios</p>
+                    <p class="text-black">Ingreso de usuarios</p>
                 <div class="container-content">
                     <form class="margin-t">
-                        <div class="form-group">
-                            <input style="text-align:center; margin:auto" type="text" class="form-control"  placeholder="Usuario" required="">
+                        <div class="form-group" style="text-align:center">
+                            
+                        <asp:TextBox runat="server" placeholder="Usuario" ID="textUsuario" class="form-control"></asp:TextBox>
+                        
+                        <asp:TextBox runat="server" placeholder="*****" ID="textContraseña" class="form-control"></asp:TextBox>
+
+                            <asp:Label runat="server" ID="labelLogueado" Visible="false" ></asp:Label>
+             
                         </div>
-                        <div class="form-group">
-                            <input style="text-align:center; margin:auto" type="password" class="form-control" placeholder="*****" required="">
-                        </div>
-                        <button type="submit" class="form-button button-l margin-b">Ingresar</button>
-        
-                        <a class="text-darkyellow" href="#">¿Olvidaste tu contraseña?</></a>
-                        <p class="text-whitesmoke text-center">¿No tenés una cuenta?</></p>
-                        <a class="text-darkyellow" href="Registro.aspx"">Registrarse!</></a>
+                        <asp:Button runat="server" class="btn btn-dark btn-sm" id="btnIngreso" OnClick="btnIngreso_Click" Text="Ingresar"/>
+                        
+                        <a class="btn btn-dark btn-sm" href="RecuperarContraseña.aspx">¿Olvidaste tu contraseña?</a>
+                        <a class="btn btn-dark btn-sm" href="Registrarse.aspx"">Registrarse!</a>
+                        <asp:Button runat="server" class="btn btn-dark btn-sm" ID="btnDesloguear" AutoPostBack="true" OnClick="btnDesloguear_Click" style="margin-top:10px" Visible="false" Text="Desloguearse" />
                     </form>
-                    <p class="margin-t text-whitesmoke"> El Galpón de los Cuadros &copy; 2022</> </p>
+                    <p class="margin-t text-whitesmoke"><small> El galpón de los Cuadros &copy; 2024</small> </p>
                 </div>
             </div>
 </body>

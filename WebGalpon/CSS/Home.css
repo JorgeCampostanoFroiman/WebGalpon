@@ -53,20 +53,21 @@
 #productos li:hover a {
     opacity: 1;
     transform: scale(1);
+    transition: 0.5s all ease-out;
 }
 
 #productos li:hover img {
-    transform:scale(1.8);
+    transform: scale(1.8);
+    transition: 0.5s all ease-out;
 }
 
 
 #productos li:hover p {
-    transform: scale(1.5);
-    visibility:hidden;
+    visibility: hidden;
+    transition: 0.1s all ease-out;
 }
 
 .content-title {
-    margin: 50px 0 30px 0;
     text-align:center;
     background-color: #343A40;
     color: var(--crema1);
@@ -75,7 +76,7 @@
 
 .content-title, .contact-subtitle {
     color: var(--crema1);
-    padding: 40px 0px;
+    padding: 2vh 0px;
 }
 
 .content-form {
@@ -135,14 +136,16 @@
 }
 
 .trabajos .trabajos-card:hover {
-        box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-        -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-        -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-        z-index: 1000;
+    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    z-index: 1000;
+    transition: 0.5s all ease-out;
 }
 
-.trabajos img:hover{
-       transform:scale(1.8);
+.trabajos img:hover {
+    transform: scale(1.8);
+    transition: 0.5s all ease-out;
 }
 
 
@@ -172,13 +175,14 @@
     -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     z-index: 1000;
+    transition: 0.5s all ease-out;
 }
 .envios-interior:hover {
     box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     z-index: 1000;
-
+    transition: 0.5s all ease-out;
 }
 
 .envios img {
@@ -188,10 +192,11 @@
 
 }
 
-.envios img:hover{
-    transform:scale(1.5);
-    border:none;
-}
+  /*  .envios img:hover {
+        transform: scale(1.5);
+        border: none;
+        transition: 0.5s all ease-out;
+    }*/
 
 .envios-texto{
     text-align:center;
@@ -212,7 +217,14 @@
 .mas-vendidos .card{
     border-radius:20px;
 }
+.mas-vendidos .card-img-top{
+    height:15vh;
+    object-fit:contain;
+}
 
+.mas-vendidos .card-img-top:hover {
+   cursor: zoom-in;
+}
 
 .novedades h1 {
     text-align: center;
@@ -221,21 +233,23 @@
 
 .mas-vendidos .card:hover {
     box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-    -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-    -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     z-index: 1000;
+    transition: 0.5s all ease-out;
+    
 }
 
 .novedades .card:hover {
-    box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+    box-shadow: 26px 21px 26px 21px rgba(0,0,0,0.79);
     -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
     z-index: 1000;
+     transition: 0.5s all ease-out;
 }
 
 .novedades .content-form {
-   height:40vh;
+   
 }
+
 
 .d-block w-100{
     height:35vh;
@@ -253,7 +267,7 @@
     }
 
     .content-form {
-        padding: 2vh;
+        padding: 0vh;
     }
 
     #productos ul {
@@ -321,7 +335,7 @@
     }
 
     .novedades .content-form{
-        height:auto;
+        height:60vh;
     }
     .d-block w-100 {
         height: auto;

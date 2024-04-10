@@ -41,15 +41,14 @@ body {
     margin: 1vh;
 }
     .card:hover {
-        box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-        -webkit-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
-        -moz-box-shadow: 26px 21px 43px 21px rgba(0,0,0,0.79);
+        box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.79);
+        -webkit-box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.79);
+        -moz-box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.79);
         z-index: 1000;
     }
         .card-img-top:hover {
-        transform: scale(2);
+        transform: scale(1.5);
         z-index: 11000;
-        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     
         }
 
@@ -58,9 +57,10 @@ body {
 }
 
 .card-img-top {
-    height: 100px;
-    width:100px;
-    margin-top:1vw;
+    height: 14vh;
+    margin-top: 1vw;
+    object-fit: contain;
+}
 }
 
 .cardflex {

@@ -37,10 +37,11 @@
 
     
     <div class="container">
-      <div class="label"><%= item.Titulo %></div>
+      <div class="label" style="font-weight:bold;font-size:xx-large;"><%= item.Titulo %></div>
       <div class="content"><%= item.Descripcion + " " + item.Descripcion2 %></div>
+        <hr>
     </div>
-      <hr>
+      
        <% } %>
 
   </div>

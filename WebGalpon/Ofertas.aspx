@@ -7,7 +7,7 @@
         <h1>Ofertas</h1>
     </div>
     <hr />
-    <div class="contact-form">
+    <div class="contact-form" style="text-align:center;">
         Aquí están todos los productos que están con descuento
     </div>
     <hr />
@@ -19,11 +19,11 @@
     <% foreach (domain.Producto item in listaOfertas)
         {%>
   <div class="card" style=" align-items:center; margin-right:15px; margin-bottom:15px; text-align:center;">
-    <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 100px; width:100px; margin-top:5px;" alt="Card image cap">
+    <img class="card-img-top" src="<%=item.ImagenUrl %>" style="height: 10vh; object-fit:contain; margin-top:5px;" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title"> <% =item.NombreProducto %></h5>
       <p class="card-text"><% =item.Descripcion %></p>
-      <p style="margin-bottom:5px;" class="card-text"> $<% =item.PrecioVenta %></p>
+      <p style="font-weight:bold;font-size:xx-large;margin-bottom:5px;" class="card-text"> $<%= (int)Decimal.Truncate(item.PrecioVenta) %></p>
       <a href="DetalleProducto.aspx?id=<% = item.Codigo%>" class="btn btn-dark btn-sm">Ver Detalle</a>
         <a href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
   <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>

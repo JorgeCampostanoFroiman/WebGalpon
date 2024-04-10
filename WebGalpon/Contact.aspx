@@ -13,7 +13,7 @@
     <div class="contact-form">
         <div class="message-form">
             <div class="contact-subtitle">
-                <h3 style="width:80%;margin:auto;color:#343A40" class="msg">¡Dejanos tu mensaje!</h3>
+                <h3 style="padding-bottom:15px;color:#343A40" class="msg">¡Dejanos tu mensaje!</h3>
             </div>
    
             <div class="contact-name">

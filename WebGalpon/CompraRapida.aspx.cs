@@ -122,13 +122,13 @@ namespace WebGalpon
                     Producto prod = negocio.BuscarProducto(text);
 
                     row.Cells[2].Text = prod.NombreProducto;
-                    row.Cells[4].Text = Convert.ToString(prod.PrecioVenta);
+                    row.Cells[4].Text = "$" + Convert.ToString((int)Decimal.Truncate(prod.PrecioVenta));
 
                     if (txtCant.Text != null)
                     {
 
                         int cant = Convert.ToInt32(txtCant.Text);
-                        row.Cells[5].Text = Convert.ToString(prod.PrecioVenta * cant);
+                        row.Cells[5].Text = "$" + Convert.ToString((int)Decimal.Truncate(prod.PrecioVenta * cant));
 
                         cantidadProductos += cant;
                         totalPedido += Convert.ToInt32(prod.PrecioVenta * cant);
@@ -243,7 +243,6 @@ namespace WebGalpon
             Document document = new Document();
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
 
-
             DataTable dt = CargarDataTable();
 
             document.Open();
@@ -261,8 +260,9 @@ namespace WebGalpon
             Paragraph titulo = new Paragraph();
             titulo.Font = new Font(FontFactory.GetFont("Georgia", 18, Font.BOLD));
             titulo.Alignment = Element.ALIGN_CENTER;
-            titulo.Add(" Pedido de: ");
 
+
+            titulo.Add(" Pedido de: " + Session["usuario"]);
 
             PdfPCell cell2 = new PdfPCell();
 

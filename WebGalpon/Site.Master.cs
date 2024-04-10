@@ -18,6 +18,29 @@ namespace WebGalpon
 
             listaMayoristas = negocio.Listar();
             Session.Add("ListaMayo", listaMayoristas);
+
+
+            if (Session["usuario"] == null)
+            {
+
+                LiMayoristas.Visible = false;
+                LiOfertas.Visible = false;
+                LiCompraRapida.Visible = false;
+                modMenu.Visible = false;
+
+            }
+            else if (((domain.Usuario)Session["usuario"]).TipoUsuario == domain.TipoUsuario.NORMAL)
+            {
+                LiMayoristas.Visible = true;
+                LiOfertas.Visible = true;
+                LiCompraRapida.Visible = true;
+                modMenu.Visible = false;
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

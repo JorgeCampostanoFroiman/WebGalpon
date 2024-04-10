@@ -16,17 +16,17 @@ namespace WebGalpon
         {
             ProductoNegocio negocio = new ProductoNegocio();
 
-            //try
-            //{
-            //    listaOfertas = negocio.ListarOfertas();
-            //    Session.Add("ListaOfertas", listaOfertas);
+            try
+            {
+                listaOfertas = negocio.ListarOfertas();
+                Session.Add("ListaOfertas", listaOfertas);
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    Session.Add("Error", ex.ToString());
-            //    /// Response.Redirect("Error.aspx");
-            //}
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                /// Response.Redirect("Error.aspx");
+            }
         }
     }
 }

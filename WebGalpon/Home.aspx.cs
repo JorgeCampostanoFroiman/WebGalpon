@@ -26,7 +26,7 @@ namespace WebGalpon
                 ListaProductos = negocio.Listar();
                 Session.Add("ListaProductos", ListaProductos);
 
-                ListaProductosPopulares = negocio.Listar();
+                ListaProductosPopulares = negocio.ListarRecomendados();
                 Session.Add("ListaProductosPopulares", ListaProductosPopulares);
 
                 ListaNovedades = novedad.ListarNovedades();

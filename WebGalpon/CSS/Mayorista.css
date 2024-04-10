@@ -138,7 +138,9 @@ h1 {
     /* Unhides the content part when active. Sets the height */
 
     .accordion .container.active .content {
-        height: 25vh;
+        display: flex;
+        justify-content:space-between;
+        height: 6vh;
         text-decoration: none;
     }
 

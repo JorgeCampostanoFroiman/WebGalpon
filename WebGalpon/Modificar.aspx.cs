@@ -26,6 +26,18 @@ namespace WebGalpon
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario user = (Usuario)Session["usuario"];
+
+            if ((Session["usuario"] != null) && (user.TipoUsuario == TipoUsuario.ADMIN))
+            {
+
+            }
+            else
+            {
+                Session.Add("error", "No tienes permisos para ver este sitio");
+                Response.Redirect("Error.aspx");
+            }
+
 
             if (!IsPostBack)
             {

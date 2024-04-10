@@ -1,0 +1,71 @@
+﻿:root {
+    --celeste1: #8ce7ea;
+    --celeste2: #08d3d3;
+    --celeste3: #8fdfe0;
+    --crema1: #f6f3e9;
+    --violeta1: #63496d;
+}
+
+body {
+    width: 100%
+}
+
+
+.searchbar {
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+}
+
+.contact-title {
+    background-color: #343A40;
+    color: var(--crema1);
+    text-align: center;
+    padding: 1vh;
+    border-radius: 5px;
+}
+
+.contact-form {
+    background-color: WHITE;
+    margin: auto;
+    padding: 1vh;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+}
+.card{
+    border: 1px solid grey;
+    border-radius: 12PX;
+    margin: 1vh;
+    width: 34vh;
+}
+
+.hidden-card {
+    border: 1px solid grey;
+    border-radius: 12PX;
+    margin: 1vh;
+}
+
+.btn btn-dark btn-sm {
+}
+
+.card-hover {
+    transform: scale(1.2);
+    box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.79);
+    -moz-box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.79);
+    z-index: 11000;
+}
+.card-img-top {
+    margin-top: 1vw;
+    object-fit: contain;
+}
+
+
+.cardflex {
+    grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) )
+}
+
+.card-body {
+    padding: 0.5vh;
+}
+

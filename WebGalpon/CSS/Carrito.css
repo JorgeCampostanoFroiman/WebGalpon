@@ -71,8 +71,7 @@ body {
 }
 
 .ImgCarro:hover {
-    transform:scale(2);
-    transform:rotate(45deg);
+    transform:scale(1.2);
 }
     .form-button:hover,
     .form-button:focus,

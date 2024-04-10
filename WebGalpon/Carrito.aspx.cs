@@ -37,35 +37,47 @@ namespace WebGalpon
                     GridViewCarrito.DataSource = dt;
                     GridViewCarrito.DataBind();
 
-                    if (Request.QueryString["Id"] != null)
+                     //&& ProductExists("Id") == true
+
+                    if (ProductExists(Request.QueryString["Id"]))
                     {
                        
-
                         ActualizarButton.Visible = true;
 
                         if (ExisteProdEnDt(Request.QueryString["Id"]) == false)
                         {
                             AgregarRow(negocio.BuscarProducto(Request.QueryString["Id"]));
+                            SumarUnidades(Request.QueryString["Id"], Request.QueryString["cant"]);
                             AlertLabel.Text = "Producto agregado correctamente";
                         }
-                        else
+                        else // sumamos unidades si ya estaba? yo creo que no
                         {
-                            SumarUnaUnidad(Request.QueryString["Id"]);
-                            AlertLabel.Text = "El producto ya estaba en el carrito, se le sumó una unidad";
+                            //SumarUnaUnidad(Request.QueryString["Id"]);
+                            //AlertLabel.Text = "El producto ya estaba en el carrito, se le sumó una unidad
+
+                            AlertLabel.Text = "El producto ya estaba en el carrito...";
                         }
                         CalcularTotales();
                     }
-                    else
+                    else if (dt != null)
                     {
                         ActualizarButton.Visible = false;
 
                         ProductosButton.Visible = true;
 
-                        AlertLabel.Text = "Actualmente no tienes productos en el carrito... ";
+                        AlertLabel.Text = "El producto no existe o no pudo agregarse... ";
 
                         TitleLabel.Text = " ";
+                    }
+                    else if (Request.QueryString["Id"] == null)
+                    {
+                        ActualizarButton.Visible = false;
 
+                        ProductosButton.Visible = true;
 
+                        AlertLabel.Text = " ";
+
+                        TitleLabel.Text = " ";
                     }
                 }
                 catch(Exception)
@@ -75,6 +87,20 @@ namespace WebGalpon
             }
         }
 
+        private bool ProductExists(string Codigo)
+        {
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            List<Producto> Aux = prodNeg.Listar();
+
+            foreach (Producto prod in Aux)
+            {
+                if (Codigo == prod.Codigo)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private void CalcularTotales()
         {
@@ -94,12 +120,12 @@ namespace WebGalpon
                     Producto prod = negocio.BuscarProducto(codigo);
 
                     row.Cells[2].Text = prod.NombreProducto;
-                    row.Cells[4].Text = Convert.ToString(prod.PrecioVenta);
+                    row.Cells[4].Text = "$" + Convert.ToString((int)Decimal.Truncate(prod.PrecioVenta));
 
                     if (txtCant.Text != null)
                     {
                         int cant = Convert.ToInt32(txtCant.Text);
-                        row.Cells[5].Text = Convert.ToString(prod.PrecioVenta * cant);
+                        row.Cells[5].Text = "$" +  Convert.ToString((int)Decimal.Truncate(prod.PrecioVenta * cant));
 
                         cantidadProductos += cant;
                         totalPedido += Convert.ToInt32(prod.PrecioVenta * cant);
@@ -117,7 +143,7 @@ namespace WebGalpon
             LabelTotalProductos.Text = "Total de Productos: " + cantidadProductos.ToString();
         }
 
-        private void SumarUnaUnidad(string id)
+        private void SumarUnidades(string id, string cantSumar)
         {
             DataTable dt = CreateDatatable();
 
@@ -141,7 +167,7 @@ namespace WebGalpon
                 if (codigo == id)
                 {
                     int cantidad = Convert.ToInt32(cant);
-                    cantidad++;
+                    cantidad = cantidad + Convert.ToInt32(cantSumar);
                     dt.Rows.Add(fila, codigo, nombre, Convert.ToString(cantidad), precio, subtotal, imagen);
                     dt.AcceptChanges();
                 }
@@ -266,10 +292,12 @@ namespace WebGalpon
                     Image imgen = row.Cells[6].FindControl("ImgCarro") as Image;
                     string imagen = imgen.ImageUrl;
 
-                    string codigo = row.Cells[2].Text;
-                    string nombre = row.Cells[3].Text;
-                    string precio = row.Cells[5].Text;
-                    string subtotal = row.Cells[6].Text;
+                    HyperLink txtLink = row.Cells[1].FindControl("TextCodigo") as HyperLink;
+                    string codigo = Convert.ToString(txtLink.Text);
+
+                    string nombre = row.Cells[2].Text;
+                    string precio = row.Cells[4].Text;
+                    string subtotal = row.Cells[5].Text;
 
                     dt.Rows.Add(filaNueva, codigo, nombre, cant, precio, subtotal, imagen);
                     dt.AcceptChanges();
@@ -282,7 +310,7 @@ namespace WebGalpon
                 }
             }
 
-
+            Session.Add("items", dt);
             GridViewCarrito.DataSource = dt;
             GridViewCarrito.DataBind();
         }
@@ -310,11 +338,17 @@ namespace WebGalpon
             Paragraph titulo = new Paragraph();
             titulo.Font = new Font(FontFactory.GetFont("Georgia", 18, Font.BOLD));
             titulo.Alignment = Element.ALIGN_CENTER;
-            titulo.Add(" Tu carrito ");
 
+            if (Convert.ToString(Session["nombreusuario"]) == "Ruben")
+            {
+                titulo.Add(" Pedido de Rubencito Deté ");
+            }
+            else
+            {
+                titulo.Add(" Pedido de " + Session["nombreusuario"]);
+            }
 
             PdfPCell cell2 = new PdfPCell();
-
 
             PdfPTable table = new PdfPTable(dt.Columns.Count);
 
@@ -325,6 +359,7 @@ namespace WebGalpon
             float[] widths = new float[dt.Columns.Count];
             for (int i = 0; i < dt.Columns.Count; i++)
                 widths[i] = 4f;
+
 
             table.SetWidths(widths);
             table.WidthPercentage = 90;
@@ -358,7 +393,7 @@ namespace WebGalpon
                         else
                         {
                             PdfPCell celda = new PdfPCell();
-                            celda.BackgroundColor = new BaseColor(180, 214, 220);
+                            celda.BackgroundColor = new BaseColor(230, 240, 240);
 
                             if (h == 6)
                             {
@@ -405,6 +440,124 @@ namespace WebGalpon
 
             document.Close();
 
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=Pedido" + ".pdf");
+            HttpContext.Current.Response.Write(document);
+            Response.Flush();
+            Response.End();
+        }
+
+
+        protected void CodeButton_Click(object sender, EventArgs e)
+        {
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
+
+
+            DataTable dt = CargarDataTable();
+
+            document.Open();
+
+            //document.SetMargins(100, 100, 100, 100);
+
+            //iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance("https://i.postimg.cc/qqyk5S7f/logo-Galpon.png");
+            //logo.ScaleToFit(30f, 12f);
+
+            //document.Add(logo);
+
+            Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 25);
+            Font font9 = FontFactory.GetFont(FontFactory.TIMES, 9);
+
+            PdfPTable table = new PdfPTable(4);
+
+            document.Add(new Chunk("\n"));
+
+            float[] widths = new float[4];
+            for (int i = 0; i < 4; i++)
+                widths[i] = 8f;
+
+            table.SetWidths(widths);
+            table.WidthPercentage = 100;
+
+            PdfPCell cell = new PdfPCell(new Phrase("columns"));
+            cell.Colspan = 30;
+
+            foreach (DataRow r in dt.Rows)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    int cantidad = 1;
+                    int cuenta = 0;
+
+                    for (int h = 0; h < dt.Columns.Count; h++)
+                    {
+                        if (Convert.ToString(r[1]) == "0")
+                        {
+                        }
+                        else
+                        {
+                            PdfPCell celda = new PdfPCell();
+                            celda.BackgroundColor = new BaseColor(230, 240, 240);
+                            PdfPCell celdaRelleno = new PdfPCell();
+                            celdaRelleno.BackgroundColor = new BaseColor(230, 240, 240);
+
+                            if (h == 3)
+                            {
+                                cantidad = Convert.ToInt32(r[h]);
+                            }
+
+                            if (h == 6)
+                            {
+                                
+                                iTextSharp.text.Image producto = iTextSharp.text.Image.GetInstance(r[h].ToString());
+                                producto.ScaleToFit(30f, 12f);
+                                celda.Image = producto;
+
+                                if (r == dt.Rows[dt.Rows.Count - 1])
+                                {
+
+                                    for (int c = 0; c < cantidad; c++)
+                                    {
+                                        table.AddCell(celda);
+                                        cuenta++;
+                                    }
+
+
+                                    int complete = cuenta % 4;
+
+                                    if (complete == 1)
+                                    {
+                                        table.AddCell(celdaRelleno);
+                                        table.AddCell(celdaRelleno);
+                                        table.AddCell(celdaRelleno);
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < complete; i++)
+                                        {
+                                            table.AddCell(celdaRelleno);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    for (int c = 0; c < cantidad; c++)
+                                    {
+                                        table.AddCell(celda);
+                                        cuenta++;
+                                    }
+                                }
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            document.Add(table);
+
+            document.Close();
 
             Response.ContentType = "application/pdf";
             Response.AddHeader("content-disposition", "attachment;filename=Pedido" + ".pdf");

@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
      <div class="container" style="text-align:center;align-items:center">
-    <link href="CSS/Mayorista.css" rel="Stylesheet" type="text/css" />
+    <link href="CSS/MAYORISTA.css" rel="Stylesheet" type="text/css" />
 
          <hr />
        <div class="contact-title">
@@ -29,131 +29,134 @@
 
              <div class="accordion-body">
   <div class="accordion">
-
       <div class="container">
-      <div class="label"> Cuadros Rectangulares
+      <div class="label"> <h1>Cuadros Rectangulares</h1>
+       <div class="content">
+           <h3>Codigo</h3>
+           <h3 style="width:16vh">Nombre</h3>
+           <h3>Imagen</h3>
+           <h3>Ver detalle</h3>
+           <h3>Agregar</h3>
+       </div>
+      <% foreach (domain.Producto item in listaProductos)
+          { if (item.Tipo == "Cuadro Rectangular" || item.Tipo == "Cuadro triptico") 
+              { %>
           
-      <% foreach (domain.Categoria item in listaCategorias)
-        {%>
-          
-      <div class="content"><a class="content-anchor" style="font-size:large" href="Productos.aspx?cat=<%= item.Id %>"><%= item.Nombre%></a> </div>
-
-       <% } %>
+      <div class="content" style="">
+          <p><%= item.Codigo %></p>
+          <p style="width:16vh"><%= item.NombreProducto%></p>
+          <img class="card-img-top" style="height:6vh;width:auto" src="<%= item.ImagenUrl %>"></>
+          <a class="content-anchor" style="font-size:large" target="_blank" href="DetalleProducto.aspx?id=<%= item.Codigo %>">Ver más</a>
+          <a target="_blank" href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg></a>
+      </div>
+       <% }
+           } %>
         </div>
     </div>
 </div>
-
-
   </div>
 
             <div class="accordion-body">
   <div class="accordion">
-
       <div class="container">
-      <div class="label"> Cuadros Escalonados
+      <div class="label"><h1>Portallaves</h1> 
+       <div class="content">
+           <h3>Codigo</h3>
+           <h3 style="width:16vh">Nombre</h3>
+           <h3>Imagen</h3>
+           <h3>Ver detalle</h3>
+           <h3>Agregar</h3>
+       </div>
+      <% foreach (domain.Producto item in listaProductos)
+          { if (item.Tipo == "Portallaves")
+              { %>
           
-       <% foreach (domain.Categoria item in listaCategorias)
-        {%>
+      <div class="content" style="">
+          <p><%= item.Codigo %></p>
+          <p style="width:16vh"><%= item.NombreProducto%></p>
+          <img class="card-img-top" style="height:6vh;width:auto" src="<%= item.ImagenUrl %>"></>
+          <a class="content-anchor" style="font-size:large" target="_blank" href="DetalleProducto.aspx?cat=<%= item.IdProducto %>">Ver más</a>
+          <a target="_blank" href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg></a>
+      </div>
+       <% }
+           } %>
+        </div>
+    </div>
+</div>
+  </div>
+
+
+            <div class="accordion-body">
+  <div class="accordion">
+      <div class="container">
+      <div class="label"><h1> Percheros</h1>
+       <div class="content">
+           <h3>Codigo</h3>
+           <h3 style="width:16vh">Nombre</h3>
+           <h3>Imagen</h3>
+           <h3>Ver detalle</h3>
+           <h3>Agregar</h3>
+       </div>
+      <% foreach (domain.Producto item in listaProductos)
+          { if (item.Tipo == "Perchero")
+              { %>
           
-       <div class="content"><a class="content-anchor" style="font-size:large" href="Productos.aspx?cat=<%= item.Id %>"><%= item.Nombre%></a> </div>
-
-       <% } %>
+      <div class="content" style="">
+          <p><%= item.Codigo %></p>
+          <p style="width:16vh"><%= item.NombreProducto%></p>
+          <img class="card-img-top" style="height:6vh;width:auto" src="<%= item.ImagenUrl %>"></>
+          <a class="content-anchor" style="font-size:large" target="_blank" href="DetalleProducto.aspx?cat=<%= item.IdProducto %>">Ver más</a>
+          <a target="_blank" href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg></a>
+      </div>
+       <% }
+           } %>
         </div>
     </div>
 </div>
-
-
   </div>
 
-             <div class="accordion-body">
+<div class="accordion-body">
   <div class="accordion">
-
       <div class="container">
-      <div class="label"> Cuadros Individuales (una pieza)
+      <div class="label"> <h1>Relojes</h1>
+       <div class="content">
+           <h3>Codigo</h3>
+           <h3 style="width:16vh">Nombre</h3>
+           <h3>Imagen</h3>
+           <h3>Ver detalle</h3>
+           <h3>Agregar</h3>
+       </div>
+      <% foreach (domain.Producto item in listaProductos)
+          { if (item.Tipo == "Relojes")
+              { %>
           
-      <% foreach (domain.Categoria item in listaCategorias)
-        {%>
-          
-       <div class="content"><a class="content-anchor" style="font-size:large" href="Productos.aspx?cat=<%= item.Id %>"><%= item.Nombre%></a> </div>
-
-       <% } %>
+      <div class="content" style="">
+          <p><%= item.Codigo %></p>
+          <p style="width:16vh"><%= item.NombreProducto%></p>
+          <img class="card-img-top" style="height:6vh;width:auto" src="<%= item.ImagenUrl %>"></>
+          <a class="content-anchor" style="font-size:large" target="_blank" href="DetalleProducto.aspx?cat=<%= item.IdProducto %>">Ver más</a>
+          <a target="_blank" href="Carrito.aspx?id=<% = item.Codigo %>"class="btn btn-dark btn-sm">Agregar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg></a>
+      </div>
+       <% }
+           } %>
         </div>
     </div>
 </div>
-
-
-  </div>
-
-             <div class="accordion-body">
-  <div class="accordion">
-
-      <div class="container">
-      <div class="label"> Portallaves
-          <div class="content"><a class="content-anchor" href="Productos.aspx?tipo=8">Ir a la sección </a> </div>
-     
-        </div>
-    </div>
-</div>
-
-
   </div>
 
 
-             <div class="accordion-body">
-  <div class="accordion">
-
-      <div class="container">
-      <div class="label"> Percheros
-          <div class="content"><a class="content-anchor" href="Productos.aspx?tipo=9">Ir a la sección </a> </div>
-    
-        </div>
-    </div>
-</div>
-
-
-  </div>
-
-
-             <div class="accordion-body">
-  <div class="accordion">
-
-      <div class="container">
-      <div class="label"> Relojes   
-          <div class="content"><a class="content-anchor" href="Productos.aspx?tipo=10">Ir a la sección </a> </div>
-      
-        </div>
-    </div>
-</div>
-
-
-  </div>
-
-             <div class="accordion-body">
-  <div class="accordion">
-
-      <div class="container">
-      <div class="label"> Bastidores
-          <div class="content"><a class="content-anchor" href="Productos.aspx?tipo=16">Ir a la sección </a> </div>
-     
-        </div>
-    </div>
-</div>
-
-
-  </div>
-             <div class="accordion-body">
-  <div class="accordion">
-
-      <div class="container">
-      <div class="label"> Tablas con frases
-          <div class="content"><a class="content-anchor" href="Productos.aspx?tipo=14">Ir a la sección </a> </div>
-     
-        </div>
-    </div>
-</div>
-
-
-  </div>
 
   </div>
 

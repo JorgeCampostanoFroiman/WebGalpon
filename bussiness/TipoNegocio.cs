@@ -38,5 +38,67 @@ namespace bussiness
                 datos.cerrarConexion();
             }
         }
+
+        public void ModificarPrecio(int PMayor, int PMinor, int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update Tipo set PrecioMayorista = " + PMayor + ",PrecioMinorista = " + PMinor + " where IdTipo = ' " + ID + "'");
+                datos.ejecutarLectura();
+               
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void ModificarPrecioMayorista(int PMayor, int ID)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update Tipo set PrecioMayorista = " + PMayor + " where IdTipo = ' " + ID + "'");
+                datos.ejecutarLectura();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public decimal PrecioPorTipo(int ID)
+        {
+            decimal precio = 0;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select NombreTipo, Descripcion, IdTipo, PrecioMayorista, PrecioMinorista from Tipo where IdTipo = '" + ID + "'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    precio = (decimal)datos.Lector["PrecioMayorista"];
+                }
+                return precio;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

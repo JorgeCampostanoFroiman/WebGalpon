@@ -87,12 +87,12 @@ namespace WebGalpon
         protected global::System.Web.UI.WebControls.ImageButton PdfButton1;
 
         /// <summary>
-        /// Control EmailButton1.
+        /// Control CodeButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton EmailButton1;
+        protected global::System.Web.UI.WebControls.Button CodeButton;
     }
 }
